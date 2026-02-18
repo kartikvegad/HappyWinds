@@ -5,7 +5,7 @@ import { Check, Star } from 'lucide-react';
 const packages = [
     {
         name: 'Foundation',
-        price: '₹7,500',
+        price: '₹9,500',
         description: 'Designed for early stage brands building their first identity.',
         features: ['5 Unique Logos Options', '10 Logo Revisions', 'JPG & PDF Logo File', 'Transparent PNG & GIF', 'AI Editable Logo File', '15 Days Delivery Time']
     },
