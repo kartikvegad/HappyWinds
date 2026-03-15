@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashLink } from 'react-router-hash-link';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -62,15 +63,16 @@ const Footer = () => {
                         <h4 style={{ color: 'inherit', marginBottom: '1.5rem', fontSize: '1.1rem' }}>Quick Links</h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                             {['About', 'Process', 'Portfolio', 'Packages', 'Education', 'Reviews'].map(item => (
-                                <a
+                                <HashLink
                                     key={item}
-                                    href={`#${item.toLowerCase()}`}
-                                    style={{ opacity: 0.85, transition: 'opacity 0.2s' }}
+                                    smooth
+                                    to={`/#${item.toLowerCase()}`}
+                                    style={{ opacity: 0.85, transition: 'opacity 0.2s', color: 'inherit', textDecoration: 'none' }}
                                     onMouseEnter={(e) => e.target.style.opacity = '1'}
                                     onMouseLeave={(e) => e.target.style.opacity = '0.85'}
                                 >
                                     {item}
-                                </a>
+                                </HashLink>
                             ))}
                         </div>
                     </div>

@@ -57,7 +57,7 @@ const Testimonials = () => {
     }, [isPaused, width]);
 
     return (
-        <section id="reviews" className="section" style={{ background: 'var(--color-bg-secondary)', overflow: 'hidden' }}>
+        <section id="reviews" className="section" style={{ background: 'transparent', overflow: 'hidden' }}>
             <div className="container">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -97,7 +97,7 @@ const Testimonials = () => {
                     {loopedReviews.map((t, index) => (
                         <motion.div
                             key={index}
-                            className="card-interactive"
+                            className="card-interactive testimonial-card"
                             style={{
                                 minWidth: '320px',
                                 maxWidth: '320px',

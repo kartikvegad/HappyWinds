@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
+import { HashLink } from 'react-router-hash-link';
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const { scrollY } = useScroll();
+    const location = useLocation();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [theme, setTheme] = useState('light');
@@ -10,6 +13,7 @@ const Navbar = () => {
 
     const menuItems = [
         { name: 'About', id: 'about' },
+        { name: 'Expertise', id: 'services' },
         { name: 'Process', id: 'process' },
         { name: 'Portfolio', id: 'portfolio' },
         { name: 'Packages', id: 'packages' },
@@ -26,79 +30,102 @@ const Navbar = () => {
     }, [theme]);
 
     useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -70% 0px',
-            threshold: 0
-        };
+        if (location.pathname !== '/') return;
 
-        const observerCallback = (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id);
-                }
+        let observer;
+
+        const setupObserver = () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '-30% 0px -30% 0px',
+                threshold: 0
+            };
+
+            const observerCallback = (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            };
+
+            observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            menuItems.forEach(item => {
+                const element = document.getElementById(item.id);
+                if (element) observer.observe(element);
             });
+
+            if (window.scrollY < 100) {
+                setActiveSection('about');
+            }
         };
 
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        const timer = setTimeout(setupObserver, 150);
 
-        menuItems.forEach(item => {
-            const element = document.getElementById(item.id);
-            if (element) observer.observe(element);
-        });
+        return () => {
+            clearTimeout(timer);
+            if (observer) observer.disconnect();
+        };
+    }, [location.pathname]);
 
-        // Also observe hero/top
-        const hero = document.querySelector('section');
-        if (hero) observer.observe(hero);
-
-        return () => observer.disconnect();
-    }, []);
+    useEffect(() => {
+        if (location.pathname !== '/') {
+            setActiveSection('');
+        }
+    }, [location.pathname]);
 
     const toggleTheme = () => {
         setTheme(prev => prev === 'light' ? 'dark' : 'light');
     };
-
-
 
     return (
         <>
             <motion.nav
                 style={{
                     position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    padding: isScrolled ? '1rem 0' : '1.5rem 0',
+                    top: isScrolled ? '1rem' : '0',
+                    left: '0',
+                    right: '0',
+                    maxWidth: isScrolled ? '1000px' : '100%',
+                    width: isScrolled ? 'calc(100% - 2rem)' : '100%',
+                    margin: '0 auto',
+                    padding: isScrolled ? '0.75rem 0' : '1.5rem 0',
                     zIndex: 100,
-                    background: isScrolled ? 'var(--color-bg-primary)' : 'transparent',
-                    backdropFilter: isScrolled ? 'blur(12px)' : 'none',
-                    borderBottom: isScrolled ? '1px solid var(--color-border)' : '1px solid transparent',
-                    transition: 'background 0.3s ease, border-color 0.3s ease, padding 0.3s ease'
+                    background: isScrolled ? 'color-mix(in srgb, var(--color-bg-primary) 50%, transparent)' : 'transparent',
+                    backdropFilter: isScrolled ? 'blur(16px)' : 'none',
+                    WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
+                    border: isScrolled ? '1px solid var(--color-border)' : '1px solid transparent',
+                    borderRadius: isScrolled ? '100px' : '0px',
+                    boxShadow: isScrolled ? '0 10px 30px -10px rgba(0,0,0,0.1)' : 'none',
+                    transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+
                 }}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
                 <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <a href="#" style={{ display: 'flex', alignItems: 'center', zIndex: 102 }}>
+                    <HashLink to="/#" style={{ display: 'flex', alignItems: 'center', zIndex: 102 }}>
                         <img
                             src="/logo.svg"
                             alt="Happy Winds"
                             style={{
-                                height: '40px',
+                                height: '52px',
                                 width: 'auto',
                                 filter: theme === 'light' ? 'invert(1)' : 'none',
-                                transition: 'filter 0.3s ease'
+                                transition: 'filter 0.3s ease, height 0.3s ease'
                             }}
                         />
-                    </a>
+                    </HashLink>
 
                     {/* Desktop Menu */}
                     <div className="desktop-menu" style={{ gap: '2rem', alignItems: 'center' }}>
                         {menuItems.map((item) => (
-                            <a
+                            <HashLink
                                 key={item.id}
-                                href={`#${item.id}`}
+                                smooth
+                                to={`/#${item.id}`}
                                 style={{
                                     fontWeight: 500,
                                     fontSize: '0.9rem',
@@ -109,7 +136,7 @@ const Navbar = () => {
                                 }}
                             >
                                 {item.name}
-                                {activeSection === item.id && (
+                                {location.pathname === '/' && activeSection === item.id && (
                                     <motion.div
                                         layoutId="navUnderline"
                                         style={{
@@ -124,7 +151,7 @@ const Navbar = () => {
                                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                                     />
                                 )}
-                            </a>
+                            </HashLink>
                         ))}
 
                         {/* Theme Switcher */}
@@ -157,9 +184,9 @@ const Navbar = () => {
                                 />
                             </button>
 
-                            <a href="#contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.85rem' }}>
+                            <HashLink to="/contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.85rem' }}>
                                 Start Now
-                            </a>
+                            </HashLink>
                         </div>
                     </div>
 
@@ -213,19 +240,59 @@ const Navbar = () => {
                             alignItems: 'center', justifyContent: 'center', gap: '2rem'
                         }}
                     >
+                        {/* Close button */}
+                        <button
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            style={{
+                                position: 'absolute',
+                                top: '1.5rem',
+                                right: '1.5rem',
+                                width: '44px',
+                                height: '44px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                border: '1px solid var(--color-border)',
+                                borderRadius: '50%',
+                                background: 'transparent',
+                                color: 'var(--color-text-primary)',
+                                fontSize: '1.25rem',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            ✕
+                        </button>
+
                         {menuItems.concat([{ name: 'Contact', id: 'contact' }]).map((item) => (
-                            <a
+                            <HashLink
                                 key={item.id}
-                                href={`#${item.id}`}
+                                smooth
+                                to={item.id === 'contact' ? '/contact' : `/#${item.id}`}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 style={{
                                     fontSize: '1.5rem',
                                     fontWeight: 500,
                                     color: activeSection === item.id ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
+                                    position: 'relative',
+                                    padding: '0.25rem 0'
                                 }}
                             >
                                 {item.name}
-                            </a>
+                                {location.pathname === '/' && activeSection === item.id && (
+                                    <motion.div
+                                        layoutId="mobileNavUnderline"
+                                        style={{
+                                            position: 'absolute',
+                                            bottom: -4,
+                                            left: '10%',
+                                            right: '10%',
+                                            height: '2px',
+                                            background: 'var(--color-text-primary)',
+                                            borderRadius: '2px'
+                                        }}
+                                    />
+                                )}
+                            </HashLink>
                         ))}
                     </motion.div>
                 )}

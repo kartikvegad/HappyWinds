@@ -81,6 +81,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
+                    className="hero-buttons"
                     style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}
                 >
                     <a href="#packages" className="btn btn-primary">

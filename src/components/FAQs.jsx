@@ -41,7 +41,7 @@ const FAQs = () => {
     const [activeIndex, setActiveIndex] = useState(null);
 
     return (
-        <section id="faq" className="section" style={{ background: 'var(--color-bg-secondary)' }}>
+        <section id="faq" className="section" style={{ background: 'transparent' }}>
             <div className="container" style={{ maxWidth: '800px' }}>
                 <h2 style={{ marginBottom: '3rem', textAlign: 'center' }}>Common Questions</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

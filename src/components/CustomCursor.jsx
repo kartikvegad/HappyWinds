@@ -3,12 +3,20 @@ import { motion, useMotionValue } from 'framer-motion';
 
 const CustomCursor = () => {
     const [isHovered, setIsHovered] = useState(false);
+    const [isTouch, setIsTouch] = useState(false);
 
     // Raw values for zero lag
     const mouseX = useMotionValue(-100);
     const mouseY = useMotionValue(-100);
 
     useEffect(() => {
+        // Detect touch/mobile device — hide cursor on these
+        const checkTouch = () => {
+            setIsTouch(window.matchMedia('(hover: none) and (pointer: coarse)').matches);
+        };
+        checkTouch();
+        window.matchMedia('(hover: none) and (pointer: coarse)').addEventListener('change', checkTouch);
+
         const moveCursor = (e) => {
             mouseX.set(e.clientX);
             mouseY.set(e.clientY);
@@ -34,6 +42,9 @@ const CustomCursor = () => {
             window.removeEventListener('mouseover', handleHover);
         };
     }, []);
+
+    // Don't render on touch devices
+    if (isTouch) return null;
 
     return (
         <motion.div
@@ -81,3 +92,4 @@ const CustomCursor = () => {
 };
 
 export default CustomCursor;
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Type, Box, Aperture, Feather, Layout } from 'lucide-react';
+import { Type, Box, Aperture, Feather, Layout, PlayCircle } from 'lucide-react';
 
 const offers = [
     { title: 'Wordmark Logo', desc: 'Typographic logos that focus on the name of your business.', icon: <Type size={28} /> },
@@ -8,26 +8,20 @@ const offers = [
     { title: 'Mascot & Emblem', desc: 'Character-based or traditional badge-style logos for strong identity.', icon: <Aperture size={28} /> },
     { title: 'Icon Mark', desc: 'Symbol-based logos that stand alone as a visual identifier.', icon: <Feather size={28} /> },
     { title: 'Branding Stationery', desc: 'Complete business card, letterhead, and envelope design systems.', icon: <Layout size={28} /> },
+    { title: 'Logo Animation', desc: 'Bringing your logo to life with dynamic motion and transitions.', icon: <PlayCircle size={28} /> },
 ];
 
 const Services = () => {
     return (
-        <section id="services" className="section" style={{ background: 'var(--color-bg-secondary)', position: 'relative' }}>
-            {/* Section Divider Animation */}
-            <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'var(--color-border)', transformOrigin: 'left' }}
-            />
+        <section id="services" className="section" style={{ background: 'transparent', position: 'relative' }}>
+
 
             <div className="container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    style={{ marginBottom: '5rem' }}
+                    style={{ marginBottom: '5rem', textAlign: 'center' }}
                 >
                     <h2 style={{ marginBottom: '1rem' }}>Our Expertise</h2>
                     <p>Specialized design disciplines.</p>
@@ -45,6 +39,7 @@ const Services = () => {
                             style={{
                                 position: 'relative',
                                 overflow: 'hidden',
+                                background: 'var(--color-bg-card)',
                             }}
                         >
                             {/* Animated Borders */}

@@ -4,7 +4,7 @@ import { ArrowDownCircle } from 'lucide-react';
 
 const Resources = () => {
     return (
-        <section id="education" className="section" style={{ background: 'var(--color-bg-secondary)', paddingTop: '4rem', paddingBottom: '4rem' }}>
+        <section id="education" className="section" style={{ background: 'transparent', paddingTop: '4rem', paddingBottom: '4rem' }}>
             <div className="container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

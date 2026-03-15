@@ -10,7 +10,7 @@ const steps = [
 
 const Process = () => {
     return (
-        <section id="process" className="section" style={{ background: '#111', color: 'white' }}>
+        <section id="process" className="section" style={{ background: 'transparent' }}>
             <div className="container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -18,11 +18,11 @@ const Process = () => {
                     viewport={{ once: true }}
                     style={{ marginBottom: '5rem', textAlign: 'center' }}
                 >
-                    <h2 style={{ color: 'white' }}>Our Process</h2>
-                    <p style={{ color: '#888' }}>From rough sketches to scalable brands.</p>
+                    <h2 style={{ color: 'var(--color-text-primary)' }}>Our Process</h2>
+                    <p style={{ color: 'var(--color-text-secondary)' }}>From rough sketches to scalable brands.</p>
                 </motion.div>
 
-                <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+                <div className="process-grid grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
                     {steps.map((step, index) => (
                         <motion.div
                             key={index}
@@ -32,11 +32,11 @@ const Process = () => {
                             transition={{ delay: index * 0.1 }}
                             style={{ position: 'relative', padding: '2rem 1rem' }}
                         >
-                            <div style={{ fontSize: '4rem', fontWeight: 700, color: 'rgba(255, 255, 255, 1)', marginBottom: '1rem', lineHeight: 1 }}>
+                            <div style={{ fontSize: '4rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '1rem', lineHeight: 1 }}>
                                 {step.num}
                             </div>
-                            <h3 style={{ color: 'white', marginBottom: '1rem', fontSize: '1.5rem' }}>{step.title}</h3>
-                            <p style={{ color: '#888', lineHeight: 1.6 }}>{step.desc}</p>
+                            <h3 style={{ color: 'var(--color-text-primary)', marginBottom: '1rem', fontSize: '1.5rem' }}>{step.title}</h3>
+                            <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>{step.desc}</p>
 
                             {index !== steps.length - 1 && (
                                 <div style={{
@@ -45,7 +45,7 @@ const Process = () => {
                                     right: 0,
                                     width: '1px',
                                     height: '40%',
-                                    background: 'rgba(255, 255, 255, 0.1)',
+                                    background: 'var(--color-border)',
                                     display: 'none', // hidden on mobile, logical on desktop via css ideally
                                 }} className="desktop-divider"></div>
                             )}

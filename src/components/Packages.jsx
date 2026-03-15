@@ -5,7 +5,7 @@ import { Check, Star } from 'lucide-react';
 const packages = [
     {
         name: 'Foundation',
-        price: '₹7,500',
+        price: '₹9,500',
         description: 'Designed for early stage brands building their first identity.',
         features: ['5 Unique Logos Options', '10 Logo Revisions', 'JPG & PDF Logo File', 'Transparent PNG & GIF', 'AI Editable Logo File', '15 Days Delivery Time']
     },
@@ -33,7 +33,7 @@ const packages = [
 
 const Packages = () => {
     return (
-        <section id="packages" className="section" style={{ background: 'var(--color-bg-primary)' }}>
+        <section id="packages" className="section" style={{ background: 'transparent' }}>
             <div className="container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -52,7 +52,6 @@ const Packages = () => {
                             <motion.div
                                 key={index}
                                 className="card-interactive"
-                                data-dark={isUltimate ? "true" : undefined}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -62,9 +61,9 @@ const Packages = () => {
                                     flexDirection: 'column',
                                     height: '100%',
                                     position: 'relative',
-                                    background: isUltimate ? 'var(--color-text-primary)' : 'var(--color-bg-card)',
-                                    color: isUltimate ? 'var(--color-bg-primary)' : 'var(--color-text-primary)',
-                                    borderColor: isUltimate ? 'var(--color-text-primary)' : 'var(--color-border)',
+                                    background: 'var(--color-bg-card)',
+                                    color: 'var(--color-text-primary)',
+                                    borderColor: 'var(--color-border)',
                                 }}
                             >
                                 {pkg.isPopular && (
@@ -79,7 +78,7 @@ const Packages = () => {
                                 {isUltimate && (
                                     <div style={{
                                         position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)',
-                                        background: 'var(--color-bg-primary)', color: 'var(--color-text-primary)',
+                                        background: 'var(--color-text-primary)', color: 'var(--color-bg-primary)',
                                         padding: '4px 12px', fontSize: '0.8rem', borderRadius: '12px', fontWeight: 600,
                                         display: 'flex', alignItems: 'center', gap: '0.25rem', width: 'max-content',
                                         zIndex: 10
@@ -91,7 +90,7 @@ const Packages = () => {
                                 <h3 style={{
                                     fontSize: '1.5rem',
                                     marginBottom: '0.8rem',
-                                    color: isUltimate ? 'var(--color-bg-primary)' : 'inherit'
+                                    color: 'inherit'
                                 }}>
                                     {pkg.name}
                                 </h3>
@@ -100,7 +99,7 @@ const Packages = () => {
                                     fontSize: '0.9rem',
                                     marginBottom: '1.5rem',
                                     opacity: 0.9,
-                                    color: isUltimate ? 'var(--color-bg-primary)' : 'var(--color-text-secondary)',
+                                    color: 'var(--color-text-secondary)',
                                     minHeight: '2.5rem'
                                 }}>
                                     {pkg.description}
@@ -110,7 +109,7 @@ const Packages = () => {
                                     fontSize: '2.1rem',
                                     fontWeight: 700,
                                     marginBottom: '2rem',
-                                    color: isUltimate ? 'var(--color-bg-primary)' : 'inherit'
+                                    color: 'inherit'
                                 }}>
                                     {pkg.price}
                                 </div>
@@ -123,7 +122,7 @@ const Packages = () => {
                                             marginBottom: '1rem',
                                             fontSize: '0.95rem',
                                             opacity: 1,
-                                            color: isUltimate ? 'var(--color-bg-primary)' : 'inherit'
+                                            color: 'inherit'
                                         }}>
                                             <Check
                                                 size={16}
@@ -131,7 +130,7 @@ const Packages = () => {
                                                     marginRight: '0.75rem',
                                                     marginTop: '2px',
                                                     flexShrink: 0,
-                                                    color: isUltimate ? 'var(--color-bg-primary)' : 'inherit'
+                                                    color: 'inherit'
                                                 }}
                                             />
                                             {feat}
@@ -145,9 +144,9 @@ const Packages = () => {
                                     rel="noopener noreferrer"
                                     className="btn btn-primary"
                                     style={{
-                                        background: isUltimate ? 'var(--color-bg-primary)' : 'var(--color-text-primary)',
-                                        color: isUltimate ? 'var(--color-text-primary)' : 'var(--color-bg-primary)',
-                                        borderColor: isUltimate ? 'var(--color-bg-primary)' : 'var(--color-text-primary)'
+                                        background: 'var(--color-text-primary)',
+                                        color: 'var(--color-bg-primary)',
+                                        borderColor: 'var(--color-text-primary)'
                                     }}
                                 >
                                     Start Now
