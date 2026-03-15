@@ -1,10 +1,29 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
+import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
+
+const CountUp = ({ to, duration = 2 }) => {
+    const count = useMotionValue(0);
+    const rounded = useTransform(count, (latest) => Math.round(latest));
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true });
+
+    useEffect(() => {
+        if (inView) {
+            const controls = animate(count, to, {
+                duration: duration,
+                ease: "easeOut",
+            });
+            return controls.stop;
+        }
+    }, [inView, to, duration]);
+
+    return <motion.span ref={ref}>{rounded}</motion.span>;
+};
 
 const stats = [
-    { number: '200+', label: 'Brands Built' },
-    { number: '10+', label: 'Years Crafting' },
-    { number: '30+', label: 'Industries Served' },
+    { number: 2000, label: 'Brands Built', suffix: '+' },
+    { number: 10, label: 'Years Crafting', suffix: '+' },
+    { number: 50, label: 'Industries Served', suffix: '+' },
 ];
 
 const About = () => {
@@ -119,7 +138,7 @@ const About = () => {
                                 marginBottom: '0.5rem',
                                 color: 'var(--color-text-primary)',
                             }}>
-                                {stat.number}
+                                <CountUp to={stat.number} />{stat.suffix}
                             </div>
                             <div style={{
                                 fontSize: '0.85rem',
@@ -139,3 +158,4 @@ const About = () => {
 };
 
 export default About;
+

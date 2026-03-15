@@ -113,7 +113,7 @@ const Navbar = () => {
                             style={{
                                 height: '52px',
                                 width: 'auto',
-                                filter: theme === 'light' ? 'invert(1)' : 'none',
+                                filter: theme === 'dark' ? 'invert(1)' : 'none',
                                 transition: 'filter 0.3s ease, height 0.3s ease'
                             }}
                         />

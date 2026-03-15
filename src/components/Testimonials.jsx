@@ -2,21 +2,20 @@ import React, { useRef } from 'react';
 import { motion, useMotionValue, useAnimation } from 'framer-motion';
 
 const testimonials = [
-    { text: "My journey with Happywinds Logo started 9 years back. They have designed extraordinary logos for my 3 companies. The best part is that they put their HEART in the work.", author: "Dr. Hiren Patel", role: "O3 Physio" },
-    { text: "We have worked with Happywinds Logo for several years and we find their creativity and attention to details are superior to any other designers we have worked with.", author: "Viral Patel", role: "Dinner Bell" },
-    { text: "Happywinds Logo has a keen eye for color, type and composition and takes a thoughtful approach for designing a logo. I was always impressed by their team.", author: "Nirav Shah", role: "Evaluation Expertz" },
-    { text: "I would like to say a big thank you to Happywinds Logo. It took multiple revisions to get what I wanted. Happywinds Logo did this without any complaint.", author: "Niren Shah", role: "Navkar Builders" },
-    { text: "Very refreshing creativity! We used Happywinds Logo to design our new corporate identity, stationery and leaflet guide. Outstanding detail.", author: "Vinod Chatwani", role: "Nirja Gruh Udhyog" },
-    { text: "The team at Happy Winds is exceptional. They didn't just design a logo; they built a brand identity that reflects our values perfectly.", author: "Amit Mehra", role: "Tech Pulse" },
-    { text: "Fast, professional, and incredibly creative. I've recommended Happy Winds to all my business associates.", author: "Sanjay Gupta", role: "Skyline Ventures" },
-    { text: "Their process is so smooth. They took the time to understand our vision and delivered something far beyond our expectations.", author: "Reya Sharma", role: "Blue Ocean" },
-    { text: "The quality of work is top-notch. Every detail was meticulously crafted. Truly a premium agency experience.", author: "Vikram Singh", role: "Swift Logistics" },
-    { text: "Happy Winds helped us transform our local business into a brand that stands out nationally. Forever grateful!", author: "Pooja Desai", role: "Urban Living" },
-    { text: "Excellent communication and brilliant design work. They are my go-to for anything branding related.", author: "Karthik Raja", role: "Vantage Point" },
-    { text: "I was skeptical about finding a good designer online, but Happy Winds exceeded every expectation. 5 stars!", author: "Deepak Verma", role: "Zenith Tech" },
-    { text: "They have a unique ability to capture a brand's essence in a simple yet powerful mark. Fantastic work.", author: "Anjali Rao", role: "Amber Glow" },
-    { text: "Professionalism at its best. The Final designs were delivered on time and were perfect on the first go.", author: "Rohan Kapoor", role: "Nova Solar" },
-    { text: "Working with them was a breeze. They are creative problem solvers who happen to be great designers too.", author: "Sneha Patil", role: "Terra Firma" }
+    { text: "My journey with Happywinds Logo started 9 years back. They have designed extraordinary logos for my 3 companies. The best part is that they put their HEART in the work.", author: "Dr. Hiren Patel", role: "O3 Physio, Ahmedabad", image: "/reviews/o3.png" },
+    { text: "We have worked with Happywinds Logo for several years and we find their creativity and attention to details are superior to any other designers we have worked with.", author: "Viral Patel", role: "Dinner Bell, Australia", image: "/reviews/dinnerbell.png" },
+    { text: "Happywinds Logo has a keen eye for color, type and composition and takes a thoughtful approach for designing a logo. I was always impressed by their team.", author: "Nirav Shah", role: "Evaluation Expertz, Ahmedabad", image: "/reviews/evaluation.png" },
+    { text: "I would like to say a big thank you to Happywinds Logo. It took multiple revisions to get what I wanted. Happywinds Logo did this without any complaint.", author: "Niren Shah", role: "Navkar Builders, Ahmedabad", image: "/reviews/navkar builders.png" },
+    { text: "Very refreshing creativity! We used Happywinds Logo to design our new corporate identity, stationery and leaflet guide. Outstanding detail.", author: "Vinod Chatwani", role: "Nirja Gruh Udhyog, Ahmedabad", image: "/reviews/nirja.png" },
+    { text: "The team at Happy Winds is exceptional. They didn't just design a logo; they built a brand identity that reflects our values perfectly.", author: "Arun Kodi", role: "Bluepanda Digital Solutions Pvt. Ltd., Coimbatore", image: "/reviews/BluePanda.png" },
+    { text: "Fast, professional, and incredibly creative. I've recommended Happy Winds to all my business associates.", author: "Alok Agrawal", role: "Caremate Pharma Pvt. Ltd., Lucknow", image: "/reviews/caremate.png" },
+    { text: "Their process is so smooth. They took the time to understand our vision and delivered something far beyond our expectations.", author: "Chiranjit Burha", role: "Chroma Biotech LLP, Dibrugarh", image: "/reviews/chroma.png" },
+    { text: "The quality of work is top-notch. Every detail was meticulously crafted. Truly a premium agency experience.", author: "Siddharth Shah", role: "Foodelicious, Surat", image: "/reviews/food.png" },
+    { text: "Happy Winds helped us transform our local business into a brand that stands out nationally. Forever grateful!", author: "Dinesh Rao", role: "Home in the City, Mumbai", image: "/reviews/home.png" },
+    { text: "Excellent communication and brilliant design work. They are my go-to for anything branding related.", author: "Harmeet Singh", role: "Rich Mmoo, Bangalore", image: "/reviews/mmoo.png" },
+    { text: "I was skeptical about finding a good designer online, but Happy Winds exceeded every expectation. 5 stars!", author: "Nikunj Bavaliya", role: "Shreya Wallets, Bhavnagar", image: "/reviews/shreya.png" },
+    { text: "They have a unique ability to capture a brand's essence in a simple yet powerful mark. Fantastic work.", author: "Shanjeev Balajothi", role: "Ayari Venture Pvt. Ltd., Tiruppur", image: "/reviews/siddhi.png" },
+    { text: "Professionalism at its best. The Final designs were delivered on time and were perfect on the first go.", author: "Mohd. Hussain", role: "Valenchi, Zambia", image: "/reviews/valenchi.png" }
 ];
 
 const Testimonials = () => {
@@ -121,13 +120,13 @@ const Testimonials = () => {
                                     overflow: 'hidden'
                                 }}>
                                     <img
-                                        src={`/reviews/${t.author.toLowerCase().replace(/ /g, '-')}.jpg`}
+                                        src={t.image}
                                         alt={t.author}
                                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                         onError={(e) => {
                                             e.target.style.display = 'none';
-                                            e.target.parentElement.style.background = 'var(--color-text-secondary)';
-                                            e.target.parentElement.style.opacity = '0.2';
+                                            e.target.parentElement.style.background = 'var(--color-bg-secondary)';
+                                            e.target.parentElement.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--color-text-secondary);font-size:1.2rem;font-weight:600">${t.author[0]}</div>`;
                                         }}
                                     />
                                 </div>

@@ -48,7 +48,7 @@ const Footer = () => {
                                 style={{
                                     height: '60px',
                                     width: 'auto',
-                                    filter: theme === 'dark' ? 'invert(1)' : 'none',
+                                    filter: theme === 'light' ? 'invert(1)' : 'none',
                                     transition: 'filter 0.3s ease'
                                 }}
                             />
