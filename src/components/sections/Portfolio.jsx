@@ -95,15 +95,15 @@ const PortfolioLogo = ({ proj }) => (
     <div
         className="portfolio-square-item card-interactive"
         style={{
-            flex: '0 0 240px',
-            width: '240px',
+            flex: '0 0 320px',
+            width: '320px',
             aspectRatio: '1/1',
             background: 'var(--color-bg-card)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '1rem',
+            padding: '0.5rem',
             position: 'relative',
         }}
     >
@@ -117,7 +117,7 @@ const PortfolioLogo = ({ proj }) => (
             height: 'calc(100% - 24px)',
             background: 'white',
             borderRadius: 'var(--radius-md)',
-            padding: '1rem',
+            padding: '0.5rem',
             boxShadow: 'inset 0 0 10px rgba(0,0,0,0.02)'
         }}>
             <img
@@ -184,7 +184,7 @@ const MarqueeRow = ({ items, direction = 'left' }) => {
                     await controls.start({
                         x: currentPos,
                         transition: {
-                            duration: 1.2, // Slower sliding animation
+                            duration: 0.8, // Faster sliding animation (from 1.2)
                             ease: [0.16, 1, 0.3, 1]
                         }
                     });
@@ -198,8 +198,8 @@ const MarqueeRow = ({ items, direction = 'left' }) => {
                         x.set(-setWidth);
                     }
 
-                    // Slower pause between shifts (3 seconds instead of 1.2s)
-                    await new Promise(resolve => setTimeout(resolve, 3000));
+                    // Faster pause between shifts (1.5 seconds instead of 3s)
+                    await new Promise(resolve => setTimeout(resolve, 1500));
                 }
             };
 
@@ -234,7 +234,7 @@ const Portfolio = () => {
     const row3 = projects.slice(62, 93);
 
     return (
-        <section id="portfolio" className="section" style={{ background: 'transparent', overflow: 'hidden', padding: '10rem 0' }}>
+        <section id="portfolio" className="section" style={{ background: 'transparent', overflow: 'hidden' }}>
             <div className="container" style={{ maxWidth: '1400px' }}>
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -258,25 +258,23 @@ const Portfolio = () => {
             <style>
                 {`
                     .portfolio-img {
-                        transition: filter 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-                        filter: grayscale(100%);
+                        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
                         transform: scale(1.1);
                     }
                     .portfolio-square-item:hover .portfolio-img {
-                        filter: grayscale(0%);
                         transform: scale(1.15);
                     }
                     @media (max-width: 1024px) {
                         .portfolio-square-item {
-                            flex: 0 0 180px !important;
-                            width: 180px !important;
+                            flex: 0 0 260px !important;
+                            width: 260px !important;
                             padding: 1rem !important;
                         }
                     }
                     @media (max-width: 640px) {
                         .portfolio-square-item {
-                            flex: 0 0 130px !important;
-                            width: 130px !important;
+                            flex: 0 0 180px !important;
+                            width: 180px !important;
                             padding: 0.75rem !important;
                         }
                         .portfolio-square-item div:first-child {
@@ -285,6 +283,7 @@ const Portfolio = () => {
                         .portfolio-square-item > div:last-child {
                             font-size: 0.75rem !important;
                         }
+                    }
                 `}
             </style>
         </section>

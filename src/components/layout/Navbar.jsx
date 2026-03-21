@@ -13,9 +13,9 @@ const Navbar = () => {
 
     const menuItems = [
         { name: 'About', id: 'about' },
+        { name: 'Portfolio', id: 'portfolio' },
         { name: 'Expertise', id: 'services' },
         { name: 'Process', id: 'process' },
-        { name: 'Portfolio', id: 'portfolio' },
         { name: 'Packages', id: 'packages' },
         { name: 'Reviews', id: 'reviews' },
         { name: 'FAQs', id: 'faq' }
@@ -237,7 +237,9 @@ const Navbar = () => {
                             position: 'fixed', inset: 0,
                             background: 'var(--color-bg-primary)',
                             zIndex: 101, display: 'flex', flexDirection: 'column',
-                            alignItems: 'center', justifyContent: 'center', gap: '2rem'
+                            alignItems: 'center', justifyContent: 'center', gap: '2rem',
+                            overflowY: 'auto',
+                            padding: '4rem 1rem'
                         }}
                     >
                         {/* Close button */}

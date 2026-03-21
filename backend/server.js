@@ -33,7 +33,7 @@ app.post('/api/contact', async (req, res) => {
     console.log('📩 Form submission received:', JSON.stringify(req.body, null, 2));
 
     // Validation
-    if (!name || !email || !phone || !projectBrief) {
+    if (!name || !email || !phone) {
         return res.status(400).json({ error: 'Required fields are missing' });
     }
 
@@ -44,43 +44,20 @@ app.post('/api/contact', async (req, res) => {
         const mailToYou = {
             from: process.env.EMAIL_USER,
             to: 'hihappywinds@gmail.com',
-            subject: `🚀 New Project Intake: ${name}`,
+            subject: `🚀 New Project Inquiry: ${name}`,
             html: `
                 <div style="font-family: 'Outfit', sans-serif; line-height: 1.6; color: #111; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 12px;">
                     <h2 style="color: #000; border-bottom: 2px solid #000; padding-bottom: 10px; margin-top: 0;">New Project Inquiry</h2>
                     
                     <div style="margin-bottom: 25px;">
-                        <h3 style="color: #666; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">1. Basic Details</h3>
+                        <h3 style="color: #666; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">Contact Details</h3>
                         <p style="margin: 5px 0;"><strong>Name:</strong> ${name}</p>
                         <p style="margin: 5px 0;"><strong>Email:</strong> ${email}</p>
                         <p style="margin: 5px 0;"><strong>Phone:</strong> ${phone}</p>
-                        <p style="margin: 5px 0;"><strong>Website:</strong> ${website || 'N/A'}</p>
-                    </div>
-
-                    <div style="margin-bottom: 25px;">
-                        <h3 style="color: #666; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">2. Project Overview</h3>
-                        <p style="margin: 5px 0;"><strong>Services:</strong> ${servicesText}</p>
-                        <p style="margin: 5px 0;"><strong>Brief:</strong></p>
-                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee;">
-                            ${projectBrief}
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 25px;">
-                        <h3 style="color: #666; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">3. Timeline & Budget</h3>
-                        <p style="margin: 5px 0;"><strong>Start Date:</strong> ${startDate || 'Flexible'}</p>
-                        <p style="margin: 5px 0;"><strong>Has Deadline:</strong> ${deadline || 'N/A'}</p>
-                        <p style="margin: 5px 0;"><strong>Budget Range:</strong> ${budget || 'N/A'}</p>
-                        <p style="margin: 5px 0;"><strong>Selected Package:</strong> ${selectedPackage || 'N/A'}</p>
-                    </div>
-
-                    <div style="margin-bottom: 25px;">
-                        <h3 style="color: #666; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">4. Discovery</h3>
-                        <p style="margin: 5px 0;"><strong>Source:</strong> ${source || 'N/A'}</p>
                     </div>
 
                     <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                    <p style="font-size: 12px; color: #888; text-align: center;">Sent from Happy Winds Project Intake Form</p>
+                    <p style="font-size: 12px; color: #888; text-align: center;">Sent from Happy Winds Contact Form</p>
                 </div>
             `
         };
@@ -93,9 +70,7 @@ app.post('/api/contact', async (req, res) => {
             html: `
                 <div style="font-family: 'Outfit', sans-serif; line-height: 1.6; color: #111; max-width: 600px; margin: 0 auto; padding: 20px;">
                     <h2 style="color: #000;">Thank you for reaching out, ${name.split(' ')[0]}!</h2>
-                    <p>We've received your project intake details. Our team is currently reviewing your brief and we'll be in touch within 24-48 hours to discuss the next steps.</p>
-                    
-                    <p>In the meantime, feel free to check out our latest work on <a href="https://instagram.com/happywindslogo" style="color: #000; font-weight: 600;">Instagram</a>.</p>
+                    <p>We've received your project details. Our team is currently reviewing your brief and we'll be in touch within 24-48 hours to discuss the next steps.</p>
                     
                     <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
                         <p style="margin: 0;">Warm regards,</p>

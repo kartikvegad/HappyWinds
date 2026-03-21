@@ -28,11 +28,11 @@ const stats = [
 
 const About = () => {
     return (
-        <section id="about" className="section" style={{ background: 'transparent', padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
+        <section id="about" className="section" style={{ background: 'transparent', position: 'relative', overflow: 'hidden' }}>
             <div className="container">
 
                 {/* Main layout: big statement left, detail right */}
-                <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem', alignItems: 'start', marginBottom: '4rem' }}>
+                <div className="about-grid">
 
                     {/* Left: Large headline */}
                     <motion.div
@@ -41,8 +41,7 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h2 style={{
-                            fontSize: 'clamp(2.5rem, 4.5vw, 3.75rem)',
+                        <h2 className="text-balance" style={{
                             fontWeight: 600,
                             lineHeight: 1.1,
                             letterSpacing: '-0.04em',
@@ -73,9 +72,7 @@ const About = () => {
                         style={{ paddingTop: '0.5rem' }}
                     >
                         <p style={{
-                            fontSize: '1.15rem',
                             lineHeight: 1.8,
-                            color: 'var(--color-text-secondary)',
                             marginBottom: '2.5rem',
                         }}>
                             Happy Winds is a design-first studio built on the belief that a great logo is never just art — it's strategy made visible. We combine deep brand thinking with obsessive craft to create identities that stand out, scale up, and stand the test of time.
@@ -107,15 +104,7 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(3, 1fr)',
-                        gap: '1px',
-                        background: 'var(--color-border)',
-                        borderRadius: 'var(--radius-lg)',
-                        overflow: 'hidden',
-                        border: '1px solid var(--color-border)',
-                    }}
+                    style={{ marginTop: '4rem' }}
                 >
                     {stats.map((stat, i) => (
                         <motion.div
@@ -158,4 +147,3 @@ const About = () => {
 };
 
 export default About;
-

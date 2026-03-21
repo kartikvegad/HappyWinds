@@ -7,7 +7,7 @@ const BackToTop = () => {
 
     useEffect(() => {
         const toggleVisibility = () => {
-            if (window.pageYOffset > 300) {
+            if (window.scrollY > 300) {
                 setIsVisible(true);
             } else {
                 setIsVisible(false);
@@ -33,27 +33,25 @@ const BackToTop = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.5 }}
                     onClick={scrollToTop}
+                    className="back-to-top-btn"
                     style={{
-                        position: 'fixed',
-                        bottom: '2rem',
-                        left: '2rem',
                         zIndex: 999,
-                        width: '50px',
-                        height: '50px',
+                        width: '56px',
+                        height: '56px',
                         borderRadius: '50%',
-                        background: 'var(--color-bg-card)',
-                        color: 'var(--color-text-primary)',
-                        border: '1px solid var(--color-border)',
+                        background: 'var(--color-text-primary)',
+                        color: 'var(--color-bg-primary)',
+                        border: '2px solid var(--color-bg-primary)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        boxShadow: 'var(--shadow-lg)',
+                        boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
                         cursor: 'pointer'
                     }}
                     whileHover={{ 
-                        scale: 1.1,
-                        background: 'var(--color-text-primary)',
-                        color: 'var(--color-bg-primary)'
+                        background: 'var(--color-bg-primary)',
+                        color: 'var(--color-text-primary)',
+                        border: '2px solid var(--color-text-primary)'
                     }}
                     whileTap={{ scale: 0.9 }}
                 >

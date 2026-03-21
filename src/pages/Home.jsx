@@ -1,22 +1,22 @@
 import React from 'react';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Process from '../components/Process';
-import Portfolio from '../components/Portfolio';
-import Services from '../components/Services';
-import Packages from '../components/Packages';
-import Testimonials from '../components/Testimonials';
-import FAQs from '../components/FAQs';
-import Resources from '../components/Resources';
+import Hero from '../components/sections/Hero';
+import About from '../components/sections/About';
+import Process from '../components/sections/Process';
+import Portfolio from '../components/sections/Portfolio';
+import Services from '../components/sections/Services';
+import Packages from '../components/sections/Packages';
+import Testimonials from '../components/sections/Testimonials';
+import FAQs from '../components/sections/FAQs';
+import Resources from '../components/sections/Resources';
 
 const Home = () => {
     return (
         <>
             <Hero />
             <About />
+            <Portfolio />
             <Services />
             <Process />
-            <Portfolio />
             <Packages />
             <Testimonials />
             <FAQs />

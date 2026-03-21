@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import InteractiveParticles from './components/InteractiveParticles';
-import CustomCursor from './components/CustomCursor';
-import WhatsAppButton from './components/WhatsAppButton';
-import BackToTop from './components/BackToTop';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import InteractiveParticles from './components/ui/InteractiveParticles';
+import CustomCursor from './components/layout/CustomCursor';
+import WhatsAppButton from './components/layout/WhatsAppButton';
+import BackToTop from './components/layout/BackToTop';
+import FloatingCTA from './components/layout/FloatingCTA';
 import Home from './pages/Home';
 import ContactPage from './pages/ContactPage';
 
@@ -16,6 +17,7 @@ function App() {
         <CustomCursor />
         <WhatsAppButton />
         <BackToTop />
+        <FloatingCTA />
         <InteractiveParticles />
         <Navbar />
         <Routes>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useSpring } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Hero = () => {
     const words = ["Silence", "Clarity", "Impact", "Future"];
@@ -46,21 +46,18 @@ const Hero = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     style={{
                         borderLeft: '2px solid var(--color-text-primary)',
-                        paddingLeft: '2rem',
+                        paddingLeft: 'clamp(1rem, 5vw, 2rem)',
                         maxWidth: '800px',
                         marginBottom: '2rem',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '1rem'
                     }}
                 >
                     <ul style={{
-                        fontSize: '1.25rem',
+                        fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                         fontWeight: 300,
                         color: 'var(--color-text-secondary)',
                         listStyle: 'none',
                         padding: 0,
-                        margin: 0,
+                        margin: '0 0 1rem 0',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '0.75rem'
@@ -72,7 +69,7 @@ const Hero = () => {
                         <li>✦ Trusted by brands that value craft and consistency.</li>
                     </ul>
 
-                    <p style={{ fontSize: '0.9rem', fontWeight: 300, color: 'var(--color-text-muted)', margin: 0 }}>
+                    <p style={{ fontSize: '0.85rem', fontWeight: 300, color: 'var(--color-text-muted)', margin: 0 }}>
                         <strong style={{ color: 'var(--color-text-primary)' }}>Note:</strong> 80% project payment is required to begin. The remaining 20% is paid after final delivery.
                     </p>
                 </motion.div>
@@ -82,7 +79,7 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="hero-buttons"
-                    style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}
+                    style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
                 >
                     <a href="#packages" className="btn btn-primary">
                         View Packages

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Contact from '../components/Contact';
+import Contact from '../components/forms/Contact';
 
 const ContactPage = () => {
     // Scroll to top on mount

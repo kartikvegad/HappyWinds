@@ -34,7 +34,7 @@ const packages = [
 const Packages = () => {
     return (
         <section id="packages" className="section" style={{ background: 'transparent' }}>
-            <div className="container">
+            <div className="container" style={{ maxWidth: '1400px' }}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ const Packages = () => {
                     <p>Transparent pricing for every stage of growth.</p>
                 </motion.div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+                <div className="packages-grid">
                     {packages.map((pkg, index) => {
                         const isUltimate = pkg.isUltimate;
                         return (
@@ -61,9 +61,6 @@ const Packages = () => {
                                     flexDirection: 'column',
                                     height: '100%',
                                     position: 'relative',
-                                    background: 'var(--color-bg-card)',
-                                    color: 'var(--color-text-primary)',
-                                    borderColor: 'var(--color-border)',
                                 }}
                             >
                                 {pkg.isPopular && (
@@ -88,25 +85,26 @@ const Packages = () => {
                                 )}
 
                                 <h3 style={{
-                                    fontSize: '1.5rem',
+                                    fontSize: '1.4rem',
                                     marginBottom: '0.8rem',
-                                    color: 'inherit'
+                                    color: 'inherit',
+                                    letterSpacing: '-0.02em'
                                 }}>
                                     {pkg.name}
                                 </h3>
 
                                 <p style={{
-                                    fontSize: '0.9rem',
+                                    fontSize: '0.85rem',
                                     marginBottom: '1.5rem',
                                     opacity: 0.9,
-                                    color: 'var(--color-text-secondary)',
-                                    minHeight: '2.5rem'
+                                    color: 'inherit',
+                                    minHeight: '3rem'
                                 }}>
                                     {pkg.description}
                                 </p>
 
                                 <div style={{
-                                    fontSize: '2.1rem',
+                                    fontSize: '1.8rem',
                                     fontWeight: 700,
                                     marginBottom: '2rem',
                                     color: 'inherit'
@@ -119,16 +117,17 @@ const Packages = () => {
                                         <li key={i} style={{
                                             display: 'flex',
                                             alignItems: 'flex-start',
-                                            marginBottom: '1rem',
-                                            fontSize: '0.95rem',
+                                            marginBottom: '0.75rem',
+                                            fontSize: '0.85rem',
                                             opacity: 1,
-                                            color: 'inherit'
+                                            color: 'inherit',
+                                            lineHeight: 1.4
                                         }}>
                                             <Check
-                                                size={16}
+                                                size={14}
                                                 style={{
-                                                    marginRight: '0.75rem',
-                                                    marginTop: '2px',
+                                                    marginRight: '0.5rem',
+                                                    marginTop: '3px',
                                                     flexShrink: 0,
                                                     color: 'inherit'
                                                 }}
@@ -143,11 +142,7 @@ const Packages = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn btn-primary"
-                                    style={{
-                                        background: 'var(--color-text-primary)',
-                                        color: 'var(--color-bg-primary)',
-                                        borderColor: 'var(--color-text-primary)'
-                                    }}
+                                    style={{ padding: '0.75rem 1.5rem', fontSize: '0.85rem' }}
                                 >
                                     Start Now
                                 </a>
