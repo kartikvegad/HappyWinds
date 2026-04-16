@@ -93,57 +93,44 @@ const projects = [
 
 const PortfolioLogo = ({ proj }) => (
     <div
-        className="portfolio-square-item card-interactive"
+        className="portfolio-square-item"
         style={{
-            flex: '0 0 320px',
-            width: '320px',
+            flex: '0 0 380px',
+            width: '380px',
             aspectRatio: '1/1',
-            background: 'var(--color-bg-card)',
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '0.5rem',
+            padding: '1.5rem',
             position: 'relative',
         }}
     >
         <div style={{
-            flex: 1,
+            width: '100%',
+            height: '100%',
+            background: 'white',
+            borderRadius: '40px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '100%',
-            marginBottom: '0.75rem',
-            height: 'calc(100% - 24px)',
-            background: 'white',
-            borderRadius: 'var(--radius-md)',
-            padding: '0.5rem',
-            boxShadow: 'inset 0 0 10px rgba(0,0,0,0.02)'
+            padding: '2.5rem',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
         }}>
             <img
                 src={proj.image}
                 alt={proj.title}
                 className="portfolio-img"
                 style={{
-                    width: '100%',
-                    height: '100%',
+                    maxWidth: '100%',
+                    maxHeight: '100%',
                     objectFit: 'contain',
-                    pointerEvents: 'none'
+                    pointerEvents: 'none',
                 }}
                 onError={(e) => {
                     e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = `<span style="font-size: 0.9rem; font-weight: 500; text-align: center;">${proj.title}</span>`;
+                    e.target.parentElement.innerHTML = `<span style="font-size: 0.9rem; font-weight: 500; text-align: center; color: var(--color-primary);">${proj.title}</span>`;
                 }}
             />
-        </div>
-
-        {/* Placeholder title section */}
-        <div style={{
-            fontSize: '0.9rem',
-            fontWeight: 600,
-            textAlign: 'center',
-        }}>
-            {proj.title}
         </div>
     </div>
 );
@@ -154,12 +141,10 @@ const MarqueeRow = ({ items, direction = 'left' }) => {
     const x = useMotionValue(0);
     const controls = useAnimation();
 
-    // Loop items to create a seamless infinite scroll effect
     const loopedItems = [...items, ...items];
 
     useEffect(() => {
         if (rowRef.current) {
-            // Half the total width because we have 2 copies of the items array
             const exactSetWidth = rowRef.current.scrollWidth / 2;
             setSetWidth(exactSetWidth);
         }
@@ -174,7 +159,6 @@ const MarqueeRow = ({ items, direction = 'left' }) => {
                 x.set(currentPos);
 
                 while (true) {
-                    // Calculate next position
                     if (direction === 'left') {
                         currentPos -= logoFullWidth;
                     } else {
@@ -184,12 +168,11 @@ const MarqueeRow = ({ items, direction = 'left' }) => {
                     await controls.start({
                         x: currentPos,
                         transition: {
-                            duration: 0.8, // Faster sliding animation (from 1.2)
+                            duration: 0.8,
                             ease: [0.16, 1, 0.3, 1]
                         }
                     });
 
-                    // Loop reset
                     if (direction === 'left' && currentPos <= -setWidth) {
                         currentPos = 0;
                         x.set(0);
@@ -198,7 +181,6 @@ const MarqueeRow = ({ items, direction = 'left' }) => {
                         x.set(-setWidth);
                     }
 
-                    // Faster pause between shifts (1.5 seconds instead of 3s)
                     await new Promise(resolve => setTimeout(resolve, 1500));
                 }
             };
@@ -228,7 +210,6 @@ const MarqueeRow = ({ items, direction = 'left' }) => {
 };
 
 const Portfolio = () => {
-    // 93 logos evenly split into 3 rows (31 elements per row)
     const row1 = projects.slice(0, 31);
     const row2 = projects.slice(31, 62);
     const row3 = projects.slice(62, 93);
@@ -258,11 +239,7 @@ const Portfolio = () => {
             <style>
                 {`
                     .portfolio-img {
-                        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-                        transform: scale(1.1);
-                    }
-                    .portfolio-square-item:hover .portfolio-img {
-                        transform: scale(1.15);
+                        transition: none;
                     }
                     @media (max-width: 1024px) {
                         .portfolio-square-item {

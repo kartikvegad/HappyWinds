@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const steps = [
-    { num: '01', title: 'Initiation', desc: 'Secure your spot with a 50% advance. We analyze your requirements and target audience.' },
+    { num: '01', title: 'Initiation', desc: 'Secure your spot with a 80% advance. We analyze your requirements and target audience.' },
     { num: '02', title: 'Ideation', desc: 'We start with rough drawings and develop unique concepts (5-20 options based on your package).' },
     { num: '03', title: 'Refinement', desc: 'We share options via WhatsApp/Email. You select a direction, and we refine it with your feedback.' },
     { num: '04', title: 'Delivery', desc: 'Once approved, we deliver all source files (AI, CDR, PDF, PNG) and stationery designs.' }

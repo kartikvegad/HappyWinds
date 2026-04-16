@@ -33,8 +33,8 @@ const WhatsAppButton = () => {
                     width: '56px',
                     height: '56px',
                     borderRadius: '50%',
-                    background: 'var(--color-text-primary)',
-                    color: 'var(--color-bg-primary)',
+                    background: 'var(--color-secondary)',
+                    color: 'white',
                     boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
                     transition: 'background 0.3s ease, color 0.3s ease',
                     border: '2px solid var(--color-bg-primary)'

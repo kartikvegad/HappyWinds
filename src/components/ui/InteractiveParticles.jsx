@@ -35,7 +35,7 @@ const InteractiveParticles = () => {
                         angle: Math.PI / 4,
                         size: 8 + Math.random() * 4,
                         width: 1,
-                        opacity: 0.03,
+                        opacity: 0.5,
                         phase: Math.random() * Math.PI * 2
                     });
                 }
@@ -49,7 +49,7 @@ const InteractiveParticles = () => {
 
             // Get theme color (black in light, white in dark)
             const style = getComputedStyle(document.documentElement);
-            const rawColor = style.getPropertyValue('--color-text-primary').trim();
+            const rawColor = style.getPropertyValue('--color-primary').trim();
 
             // We need to convert hex/rgb to just the components to apply our own alpha
             // But since it's basically black or white, we can be more direct if we want.
@@ -63,7 +63,7 @@ const InteractiveParticles = () => {
                 let targetAngle = Math.PI / 4 + Math.sin(time + p.phase) * 0.1;
                 let targetX = p.originalX;
                 let targetY = p.originalY;
-                let targetOpacity = 0.03; // Very subtle base opacity
+                let targetOpacity = 0.08; // Increased base opacity
                 let targetWidth = 1;
 
                 if (distance < mouse.radius) {
@@ -73,7 +73,7 @@ const InteractiveParticles = () => {
                     targetX -= (dx / distance) * force * 30;
                     targetY -= (dy / distance) * force * 30;
 
-                    targetOpacity = 0.03 + force * 0.25; // Lower peak opacity for readability
+                    targetOpacity = 0.08 + force * 0.4; // Enhanced interaction opacity
                     targetWidth = 1 + force * 1;
                 }
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import { HashLink } from 'react-router-hash-link';
 import { useLocation } from 'react-router-dom';
+import { Sun, Moon } from 'lucide-react';
 
 const Navbar = () => {
     const { scrollY } = useScroll();
@@ -92,13 +93,19 @@ const Navbar = () => {
                     margin: '0 auto',
                     padding: isScrolled ? '0.75rem 0' : '1.5rem 0',
                     zIndex: 100,
-                    background: isScrolled ? 'color-mix(in srgb, var(--color-bg-primary) 50%, transparent)' : 'transparent',
-                    backdropFilter: isScrolled ? 'blur(16px)' : 'none',
-                    WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
-                    border: isScrolled ? '1px solid var(--color-border)' : '1px solid transparent',
+                    background: isScrolled 
+                        ? (theme === 'dark' ? 'rgba(5, 38, 39, 0.8)' : 'rgba(247, 254, 255, 0.8)') 
+                        : 'transparent',
+                    backdropFilter: isScrolled ? 'blur(24px) saturate(180%)' : 'none',
+                    WebkitBackdropFilter: isScrolled ? 'blur(24px) saturate(180%)' : 'none',
+                    border: isScrolled 
+                        ? (theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(0, 0, 0, 0.05)') 
+                        : '1px solid transparent',
                     borderRadius: isScrolled ? '100px' : '0px',
-                    boxShadow: isScrolled ? '0 10px 30px -10px rgba(0,0,0,0.1)' : 'none',
-                    transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                    boxShadow: isScrolled 
+                        ? (theme === 'dark' ? '0 8px 32px 0 rgba(0, 0, 0, 0.3)' : '0 8px 32px 0 rgba(31, 38, 135, 0.07)') 
+                        : 'none',
+                    transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
 
                 }}
                 initial={{ y: -100 }}
@@ -129,7 +136,7 @@ const Navbar = () => {
                                 style={{
                                     fontWeight: 500,
                                     fontSize: '0.9rem',
-                                    color: activeSection === item.id ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
+                                    color: activeSection === item.id ? 'var(--color-primary)' : 'var(--color-text-secondary)',
                                     position: 'relative',
                                     transition: 'color 0.3s ease',
                                     padding: '0.5rem 0'
@@ -145,7 +152,7 @@ const Navbar = () => {
                                             left: 0,
                                             right: 0,
                                             height: '2px',
-                                            background: 'var(--color-text-primary)',
+                                            background: 'var(--color-primary)',
                                             borderRadius: '2px'
                                         }}
                                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
@@ -159,28 +166,50 @@ const Navbar = () => {
                             <button
                                 onClick={toggleTheme}
                                 style={{
-                                    width: '44px',
-                                    height: '24px',
-                                    background: 'var(--color-text-primary)',
+                                    width: '56px',
+                                    height: '28px',
+                                    background: 'var(--color-bg-secondary)',
                                     borderRadius: '100px',
                                     position: 'relative',
                                     display: 'flex',
                                     alignItems: 'center',
-                                    padding: '3px',
+                                    padding: '4px',
                                     cursor: 'pointer',
-                                    border: 'none',
-                                    outline: 'none'
+                                    border: '1px solid var(--color-border)',
+                                    outline: 'none',
+                                    boxShadow: 'inset 0 1px 4px rgba(0,0,0,0.05)',
+                                    transition: 'all 0.3s ease'
                                 }}
                             >
+                                <div style={{ 
+                                    position: 'absolute', width: '100%', left: 0, 
+                                    display: 'flex', justifyContent: 'space-between', 
+                                    padding: '0 8px', color: 'var(--color-primary)', 
+                                    opacity: 0.5, pointerEvents: 'none' 
+                                }}>
+                                    <Sun size={12} />
+                                    <Moon size={12} />
+                                </div>
                                 <motion.div
                                     style={{
-                                        width: '18px',
-                                        height: '18px',
-                                        background: 'var(--color-bg-primary)',
+                                        width: '20px',
+                                        height: '20px',
+                                        background: 'var(--color-primary)',
                                         borderRadius: '50%',
+                                        zIndex: 1,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
                                     }}
-                                    animate={{ x: theme === 'dark' ? 20 : 0 }}
-                                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                    animate={{ 
+                                        x: theme === 'dark' ? 26 : 0,
+                                        scale: theme === 'dark' ? 1 : 1
+                                    }}
+                                    transition={{ 
+                                        x: { type: "spring", stiffness: 700, damping: 35 },
+                                        scale: { duration: 0.1 }
+                                    }}
                                 />
                             </button>
 
@@ -195,22 +224,27 @@ const Navbar = () => {
                         <button
                             onClick={toggleTheme}
                             style={{
-                                width: '44px',
-                                height: '24px',
-                                background: 'var(--color-text-primary)',
+                                width: '56px',
+                                height: '28px',
+                                background: 'var(--color-bg-secondary)',
                                 borderRadius: '100px',
                                 position: 'relative',
                                 display: 'flex',
                                 alignItems: 'center',
-                                padding: '3px',
-                                border: 'none',
-                                outline: 'none'
+                                padding: '4px',
+                                border: '1px solid var(--color-border)',
+                                outline: 'none',
+                                boxShadow: 'inset 0 1px 4px rgba(0,0,0,0.05)'
                             }}
                         >
+                            <div style={{ position: 'absolute', width: '100%', left: 0, display: 'flex', justifyContent: 'space-between', padding: '0 8px', color: 'var(--color-primary)', opacity: 0.4 }}>
+                                <Sun size={12} />
+                                <Moon size={12} />
+                            </div>
                             <motion.div
-                                style={{ width: '18px', height: '18px', background: 'var(--color-bg-primary)', borderRadius: '50%' }}
-                                animate={{ x: theme === 'dark' ? 20 : 0 }}
-                                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                style={{ width: '20px', height: '20px', background: 'var(--color-primary)', borderRadius: '50%', zIndex: 1 }}
+                                animate={{ x: theme === 'dark' ? 26 : 0 }}
+                                transition={{ type: "spring", stiffness: 700, damping: 35 }}
                             />
                         </button>
 
@@ -274,7 +308,7 @@ const Navbar = () => {
                                 style={{
                                     fontSize: '1.5rem',
                                     fontWeight: 500,
-                                    color: activeSection === item.id ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
+                                    color: activeSection === item.id ? 'var(--color-primary)' : 'var(--color-text-secondary)',
                                     position: 'relative',
                                     padding: '0.25rem 0'
                                 }}
@@ -289,7 +323,7 @@ const Navbar = () => {
                                             left: '10%',
                                             right: '10%',
                                             height: '2px',
-                                            background: 'var(--color-text-primary)',
+                                            background: 'var(--color-primary)',
                                             borderRadius: '2px'
                                         }}
                                     />

@@ -66,7 +66,7 @@ const Packages = () => {
                                 {pkg.isPopular && (
                                     <div style={{
                                         position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)',
-                                        background: 'var(--color-text-primary)', color: 'var(--color-bg-primary)',
+                                        background: 'var(--color-secondary)', color: 'white',
                                         padding: '4px 12px', fontSize: '0.8rem', borderRadius: '12px', fontWeight: 600,
                                         zIndex: 10
                                     }}>POPULAR</div>
@@ -75,7 +75,7 @@ const Packages = () => {
                                 {isUltimate && (
                                     <div style={{
                                         position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)',
-                                        background: 'var(--color-text-primary)', color: 'var(--color-bg-primary)',
+                                        background: 'var(--color-primary)', color: 'white',
                                         padding: '4px 12px', fontSize: '0.8rem', borderRadius: '12px', fontWeight: 600,
                                         display: 'flex', alignItems: 'center', gap: '0.25rem', width: 'max-content',
                                         zIndex: 10

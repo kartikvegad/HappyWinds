@@ -39,8 +39,8 @@ const BackToTop = () => {
                         width: '56px',
                         height: '56px',
                         borderRadius: '50%',
-                        background: 'var(--color-text-primary)',
-                        color: 'var(--color-bg-primary)',
+                        background: 'var(--color-primary)',
+                        color: 'white',
                         border: '2px solid var(--color-bg-primary)',
                         display: 'flex',
                         alignItems: 'center',
@@ -49,9 +49,9 @@ const BackToTop = () => {
                         cursor: 'pointer'
                     }}
                     whileHover={{ 
-                        background: 'var(--color-bg-primary)',
-                        color: 'var(--color-text-primary)',
-                        border: '2px solid var(--color-text-primary)'
+                        background: 'var(--color-secondary)',
+                        color: 'white',
+                        border: '2px solid var(--color-secondary)'
                     }}
                     whileTap={{ scale: 0.9 }}
                 >

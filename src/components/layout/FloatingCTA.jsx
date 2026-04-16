@@ -22,9 +22,9 @@ const FloatingCTA = () => {
             <motion.button
                 onClick={() => navigate('/contact')}
                 whileHover={{ 
-                    background: 'var(--color-bg-primary)', 
-                    color: 'var(--color-text-primary)' ,
-                    border: '2px solid var(--color-text-primary)'
+                    background: 'var(--color-secondary)', 
+                    color: 'white',
+                    border: '2px solid var(--color-secondary)'
                 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn"
@@ -36,8 +36,8 @@ const FloatingCTA = () => {
                     letterSpacing: '0.05em',
                     textTransform: 'uppercase',
                     boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
-                    background: 'var(--color-text-primary)',
-                    color: 'var(--color-bg-primary)',
+                    background: 'var(--color-primary)',
+                    color: 'white',
                     border: '2px solid var(--color-bg-primary)',
                     display: 'flex',
                     alignItems: 'center',

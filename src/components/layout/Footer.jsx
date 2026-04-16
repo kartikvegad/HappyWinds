@@ -28,9 +28,9 @@ const Footer = () => {
     return (
         <footer style={{
             padding: '5rem 0 2rem',
-            background: 'var(--color-text-primary)',
-            color: 'var(--color-bg-primary)',
-            borderTop: '1px solid var(--color-border)'
+            background: '#052627',
+            color: 'white',
+            borderTop: '4px solid var(--color-primary)'
         }}>
             <div className="container">
                 <div style={{
@@ -48,7 +48,7 @@ const Footer = () => {
                                 style={{
                                     height: '60px',
                                     width: 'auto',
-                                    filter: theme === 'light' ? 'invert(1)' : 'none',
+                                    filter: 'brightness(0) invert(1)',
                                     transition: 'filter 0.3s ease'
                                 }}
                             />

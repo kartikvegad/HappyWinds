@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Hero = () => {
-    const words = ["Silence", "Clarity", "Impact", "Future"];
+    const words = ["Meaning", "Impact", "Stories", "Purpose", "Emotion"];
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const Hero = () => {
                 >
                     <h1 style={{ maxWidth: '1000px', marginBottom: '2.5rem', lineHeight: 1.1, letterSpacing: '-0.04em' }}>
                         We Craft Identities that <br />
-                        <span style={{ display: 'inline-flex', flexDirection: 'column', height: '1.1em', overflow: 'hidden', verticalAlign: 'bottom', color: 'var(--color-text-secondary)' }}>
+                        <span style={{ display: 'inline-flex', flexDirection: 'column', height: '1.1em', overflow: 'hidden', verticalAlign: 'bottom', color: 'var(--color-secondary)' }}>
                             <AnimatePresence mode="wait">
                                 <motion.span
                                     key={words[index]}
@@ -45,7 +45,7 @@ const Hero = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                     style={{
-                        borderLeft: '2px solid var(--color-text-primary)',
+                        borderLeft: '2px solid var(--color-primary)',
                         paddingLeft: 'clamp(1rem, 5vw, 2rem)',
                         maxWidth: '800px',
                         marginBottom: '2rem',
@@ -68,10 +68,6 @@ const Hero = () => {
                         <li>✦ Designed for clarity, recognition and long term use.</li>
                         <li>✦ Trusted by brands that value craft and consistency.</li>
                     </ul>
-
-                    <p style={{ fontSize: '0.85rem', fontWeight: 300, color: 'var(--color-text-muted)', margin: 0 }}>
-                        <strong style={{ color: 'var(--color-text-primary)' }}>Note:</strong> 80% project payment is required to begin. The remaining 20% is paid after final delivery.
-                    </p>
                 </motion.div>
 
                 <motion.div
@@ -84,10 +80,10 @@ const Hero = () => {
                     <a href="#packages" className="btn btn-primary">
                         View Packages
                     </a>
-                    <a href="#contact" className="btn btn-link" style={{ display: 'flex', alignItems: 'center', fontWeight: 500 }}>
+                    <a href="/contact" className="btn btn-link" style={{ display: 'flex', alignItems: 'center', fontWeight: 500 }}>
                         Get in Touch
                         <div
-                            style={{ width: 6, height: 6, background: 'var(--color-text-primary)', borderRadius: '50%', marginLeft: '0.75rem' }}
+                            style={{ width: 6, height: 6, background: 'var(--color-secondary)', borderRadius: '50%', marginLeft: '0.75rem' }}
                         />
                     </a>
                 </motion.div>
