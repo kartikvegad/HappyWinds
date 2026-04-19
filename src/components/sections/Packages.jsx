@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const packages = [
     {
@@ -137,15 +138,13 @@ const Packages = () => {
                                     ))}
                                 </ul>
 
-                                <a
-                                    href="https://rzp.io/l/lKbICzMhG"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <Link
+                                    to="/contact"
                                     className="btn btn-primary"
-                                    style={{ padding: '0.75rem 1.5rem', fontSize: '0.85rem' }}
+                                    style={{ padding: '0.75rem 1.5rem', fontSize: '0.85rem', textAlign: 'center', display: 'block' }}
                                 >
-                                    Start Now
-                                </a>
+                                    Book a Call
+                                </Link>
                             </motion.div>
                         );
                     })}

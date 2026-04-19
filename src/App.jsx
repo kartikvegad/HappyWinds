@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import InteractiveParticles from './components/ui/InteractiveParticles';
-import CustomCursor from './components/layout/CustomCursor';
+
 import WhatsAppButton from './components/layout/WhatsAppButton';
 import BackToTop from './components/layout/BackToTop';
 
@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <CustomCursor />
+
         <WhatsAppButton />
         <BackToTop />
 

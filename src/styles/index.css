@@ -55,23 +55,16 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
   overflow-x: hidden;
 }
 
 body {
   overflow-x: hidden;
   font-size: 16px;
-  cursor: none;
   width: 100%;
 }
 
-button,
-a,
-.btn,
-.card-interactive {
-  cursor: none !important;
-}
+
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -479,15 +472,7 @@ p {
   }
 }
 
-/* Restore normal cursor on touch devices */
-@media (hover: none) and (pointer: coarse) {
-  html, body, button, a, .btn, .card-interactive {
-    cursor: auto !important;
-  }
-  .custom-cursor {
-    display: none !important;
-  }
-}
+
 
 /* Responsive Utilities */
 .text-balance {
