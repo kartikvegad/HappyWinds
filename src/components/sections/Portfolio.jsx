@@ -17,19 +17,17 @@ const PortfolioLogo = ({ proj }) => (
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '1.5rem',
+            padding: '0.25rem',
             position: 'relative',
         }}
     >
-        <div style={{
+        <div className="portfolio-inner-card" style={{
             width: '100%',
             height: '100%',
             background: 'white',
-            borderRadius: '40px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '2.5rem',
             boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
         }}>
             <img
@@ -106,12 +104,12 @@ const MarqueeRow = ({ items, direction = 'left' }) => {
     }, [setWidth, direction, items.length]);
 
     return (
-        <div style={{ overflow: 'hidden', padding: '1rem 0' }}>
+        <div style={{ overflow: 'hidden', padding: '0.25rem 0' }}>
             <motion.div
                 ref={rowRef}
                 style={{
                     display: 'flex',
-                    gap: '1.25rem',
+                    gap: '0.25rem',
                     width: 'max-content',
                     x
                 }}
@@ -146,7 +144,7 @@ const Portfolio = () => {
                 </motion.div>
             </div>
 
-            <div className="portfolio-rows" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <div className="portfolio-rows" style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                 <MarqueeRow items={row1} direction="left" />
                 <MarqueeRow items={row2} direction="right" />
                 <MarqueeRow items={row3} direction="left" />
@@ -185,18 +183,30 @@ const Portfolio = () => {
                     .portfolio-img {
                         transition: none;
                     }
+                    .portfolio-inner-card {
+                        padding: 1.75rem;
+                        border-radius: 40px;
+                    }
                     @media (max-width: 1024px) {
                         .portfolio-square-item {
                             flex: 0 0 260px !important;
                             width: 260px !important;
-                            padding: 1rem !important;
+                            padding: 0.5rem !important;
+                        }
+                        .portfolio-inner-card {
+                            padding: 1.25rem !important;
+                            border-radius: 30px !important;
                         }
                     }
                     @media (max-width: 640px) {
                         .portfolio-square-item {
-                            flex: 0 0 180px !important;
-                            width: 180px !important;
+                            flex: 0 0 240px !important;
+                            width: 240px !important;
+                            padding: 0.375rem !important;
+                        }
+                        .portfolio-inner-card {
                             padding: 0.75rem !important;
+                            border-radius: 20px !important;
                         }
                         .portfolio-square-item div:first-child {
                             margin-bottom: 0.5rem !important;

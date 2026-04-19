@@ -5,7 +5,7 @@ import { User, Mail, Phone, Send, HelpCircle, Check } from 'lucide-react';
 const Contact = () => {
     const [formState, setFormState] = useState({
         name: '',
-        email: '',
+        company: '',
         phone: '',
     });
 
@@ -41,7 +41,7 @@ const Contact = () => {
 
             if (response.ok) {
                 setStatus({ type: 'success', message: 'Thank you! Your details have been received and the Team will contact you soon.' });
-                setFormState({ name: '', email: '', phone: '' });
+                setFormState({ name: '', company: '', phone: '' });
             } else {
                 setStatus({ type: 'error', message: data.error || 'Something went wrong. Please try again.' });
             }
@@ -128,13 +128,13 @@ const Contact = () => {
                                     />
                                 </div>
                                 <div>
-                                    <label className="input-label">Email Address</label>
+                                    <label className="input-label">Company</label>
                                     <input
-                                        type="email"
+                                        type="text"
                                         className="custom-input"
-                                        placeholder="e.g. john@example.com"
-                                        value={formState.email}
-                                        onChange={e => setFormState(prev => ({ ...prev, email: e.target.value }))}
+                                        placeholder="e.g. Acme Corp"
+                                        value={formState.company}
+                                        onChange={e => setFormState(prev => ({ ...prev, company: e.target.value }))}
                                         required
                                     />
                                 </div>
