@@ -22,23 +22,17 @@ const transporter = nodemailer.createTransport({
 
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
-    const {
-        name, email, phone, website,
-        projectBrief, services,
-        startDate, deadline, budget, selectedPackage,
-        source
-    } = req.body;
+    const { name, company, phone } = req.body;
 
     // DEBUG: log everything received
     console.log('📩 Form submission received:', JSON.stringify(req.body, null, 2));
 
     // Validation
-    if (!name || !email || !phone) {
+    if (!name || !phone) {
         return res.status(400).json({ error: 'Required fields are missing' });
     }
 
     try {
-        const servicesText = services && services.length > 0 ? services.join(', ') : 'None specified';
 
         // Email to you
         const mailToYou = {
@@ -52,7 +46,7 @@ app.post('/api/contact', async (req, res) => {
                     <div style="margin-bottom: 25px;">
                         <h3 style="color: #666; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">Contact Details</h3>
                         <p style="margin: 5px 0;"><strong>Name:</strong> ${name}</p>
-                        <p style="margin: 5px 0;"><strong>Email:</strong> ${email}</p>
+                        <p style="margin: 5px 0;"><strong>Company:</strong> ${company}</p>
                         <p style="margin: 5px 0;"><strong>Phone:</strong> ${phone}</p>
                     </div>
 
@@ -62,31 +56,12 @@ app.post('/api/contact', async (req, res) => {
             `
         };
 
-        // Confirmation email to customer
-        const mailToCustomer = {
-            from: process.env.EMAIL_USER,
-            to: email,
-            subject: 'We\'ve received your project details - Happy Winds',
-            html: `
-                <div style="font-family: 'Outfit', sans-serif; line-height: 1.6; color: #111; max-width: 600px; margin: 0 auto; padding: 20px;">
-                    <h2 style="color: #000;">Thank you for reaching out, ${name.split(' ')[0]}!</h2>
-                    <p>We've received your project details. Our team is currently reviewing your brief and we'll be in touch within 24-48 hours to discuss the next steps.</p>
-                    
-                    <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
-                        <p style="margin: 0;">Warm regards,</p>
-                        <p style="margin: 0; font-weight: 700;">Team Happy Winds</p>
-                    </div>
-                </div>
-            `
-        };
-
         // Send emails
         await transporter.sendMail(mailToYou);
-        await transporter.sendMail(mailToCustomer);
 
         res.status(200).json({
             success: true,
-            message: 'Inquiry received successfully. Check your email for confirmation.'
+            message: 'Inquiry received successfully. The team will contact you soon.'
         });
 
     } catch (error) {

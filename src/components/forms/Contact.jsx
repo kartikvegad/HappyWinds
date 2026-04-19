@@ -18,17 +18,8 @@ const Contact = () => {
         setStatus({ type: '', message: '' });
 
         try {
-            // Include empty placeholders for the server-side to avoid issues
             const payload = {
-                ...formState,
-                website: 'N/A',
-                projectBrief: 'N/A',
-                services: [],
-                startDate: 'Flexible',
-                deadline: 'N/A',
-                budget: 'N/A',
-                selectedPackage: 'N/A',
-                source: 'Other'
+                ...formState
             };
 
             const response = await fetch('/api/contact', {
@@ -117,6 +108,17 @@ const Contact = () => {
                             <h3 className="form-group-title"><User size={20} /> Contact Information</h3>
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
                                 <div>
+                                    <label className="input-label">Company Name</label>
+                                    <input
+                                        type="text"
+                                        className="custom-input"
+                                        placeholder="e.g. Acme Corp"
+                                        value={formState.company}
+                                        onChange={e => setFormState(prev => ({ ...prev, company: e.target.value }))}
+                                        required
+                                    />
+                                </div>
+                                <div>
                                     <label className="input-label">Full Name</label>
                                     <input
                                         type="text"
@@ -124,17 +126,6 @@ const Contact = () => {
                                         placeholder="e.g. John Doe"
                                         value={formState.name}
                                         onChange={e => setFormState(prev => ({ ...prev, name: e.target.value }))}
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label className="input-label">Company</label>
-                                    <input
-                                        type="text"
-                                        className="custom-input"
-                                        placeholder="e.g. Acme Corp"
-                                        value={formState.company}
-                                        onChange={e => setFormState(prev => ({ ...prev, company: e.target.value }))}
                                         required
                                     />
                                 </div>
