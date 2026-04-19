@@ -6,7 +6,7 @@ import InteractiveParticles from './components/ui/InteractiveParticles';
 import CustomCursor from './components/layout/CustomCursor';
 import WhatsAppButton from './components/layout/WhatsAppButton';
 import BackToTop from './components/layout/BackToTop';
-import FloatingCTA from './components/layout/FloatingCTA';
+
 import Home from './pages/Home';
 import ContactPage from './pages/ContactPage';
 
@@ -17,7 +17,7 @@ function App() {
         <CustomCursor />
         <WhatsAppButton />
         <BackToTop />
-        <FloatingCTA />
+
         <InteractiveParticles />
         <Navbar />
         <Routes>

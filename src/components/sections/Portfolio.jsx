@@ -1,95 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useAnimation, useMotionValue } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
-const projects = [
-    { title: "Tasty Wave", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-01.png" },
-    { title: "Bartan Bazar", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-02.png" },
-    { title: "Dream Heritage Holidays", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-03.png" },
-    { title: "Caremate Pharmaceuticals", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-04.png" },
-    { title: "Footmark", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-05.png" },
-    { title: "O3 Physio Clinic", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-06.png" },
-    { title: "Kumar Cards", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-08.png" },
-    { title: "Bared Monkey Laser Spa", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-09.png" },
-    { title: "Namkeenmart", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-10.png" },
-    { title: "Catch Aloha Foundation", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-12.png" },
-    { title: "Alpha Shooters", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-13.png" },
-    { title: "Audiobreeze", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-14.png" },
-    { title: "ChatBots & Learning Labs", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-16.png" },
-    { title: "DigitalBlock Securities", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-17.png" },
-    { title: "B2 Motorsports", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-18.png" },
-    { title: "Olive & Blonde", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-19.png" },
-    { title: "Sweets By The Pound L.L.C", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-20.png" },
-    { title: "Trueblox", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-22.png" },
-    { title: "Atlantic Ocean Marine & Shipping Services", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-24.png" },
-    { title: "VW Podcast", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-25.png" },
-    { title: "Black Diamond Development", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-26.png" },
-    { title: "Course Bridge", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-27.png" },
-    { title: "Danger Soup", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-28.png" },
-    { title: "Fly Tools", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-29.png" },
-    { title: "KidRags.com", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-30.png" },
-    { title: "Koma", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-31.png" },
-    { title: "Lubna Foods Ltd.", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-33.png" },
-    { title: "Authentic Nature", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-34.png" },
-    { title: "Pacote.co", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-35.png" },
-    { title: "QuickByte", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-36.png" },
-    { title: "Home in the City", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-39.png" },
-    { title: "Killoff", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-40.png" },
-    { title: "Bluepanda Digital Solution Pvt. Ltd.", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-45.png" },
-    { title: "Siddhi Builders and Developers Pvt. Ltd.", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-46.png" },
-    { title: "Siddhi Solar", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-47.png" },
-    { title: "Sumukha Dairy Farm", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-48.png" },
-    { title: "Foodelicious", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-50.png" },
-    { title: "Chroma Biotech", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-51.png" },
-    { title: "curioUS:mIND", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-52.png" },
-    { title: "Medielect", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-53.png" },
-    { title: "Rich Mmoo", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-54.png" },
-    { title: "ChaiBot", image: "/portfolio/lOGOS PNG/2021 PNG LOGO PROFILE-55.png" },
-    { title: "BTW Financial Services & IMF Pvt. Ltd.", image: "/portfolio/lOGOS PNG/BTW_BTW final logo.jpg" },
-    { title: "Svasthya ", image: "/portfolio/lOGOS PNG/Bhumi.Svasthyaall_Main Logo top icon.png" },
-    { title: "Bright Force Technologies", image: "/portfolio/lOGOS PNG/Bright Force Logo_main logo.png" },
-    { title: "Centinel", image: "/portfolio/lOGOS PNG/CONTE-03.png" },
-    { title: "Concerto Sound & Stands", image: "/portfolio/lOGOS PNG/Concerto Final PNG.png" },
-    { title: "Echelon Property Management", image: "/portfolio/lOGOS PNG/EchelonPropertyManagement3-01.png" },
-    { title: "Encore Realty", image: "/portfolio/lOGOS PNG/Encore Dark Steel for light BG Optional Logo. PNG-01-01.png" },
-    { title: "Nirja Gruh Udhyog", image: "/portfolio/lOGOS PNG/Final Logo Nirja Gruh Udhyog-03.png" },
-    { title: "Munchify", image: "/portfolio/lOGOS PNG/Final Manchify logo files_logo with red color.png" },
-    { title: "High Ninez Insurance Brokers Pvt.Ltd.", image: "/portfolio/lOGOS PNG/High 9nz final file-08.png" },
-    { title: "Laundry Spark", image: "/portfolio/lOGOS PNG/LAUNDRY.ALLMOST FINAL.ANIL-05.png" },
-    { title: "Philomex", image: "/portfolio/lOGOS PNG/Pholomex Branding TM-04.png" },
-    { title: "Ramdev Jewllwers", image: "/portfolio/lOGOS PNG/RAMDEV j-14.png" },
-    { title: "Sheshu's Food Delight", image: "/portfolio/lOGOS PNG/SHESHU-02.png" },
-    { title: "TaiyouSom Metachem", image: "/portfolio/lOGOS PNG/TAIYOU-03.png" },
-    { title: "KEPL Healthcare", image: "/portfolio/lOGOS PNG/all visiting card copy-14.png" },
-    { title: "Amantra Investment Pvt. Ltd.", image: "/portfolio/lOGOS PNG/amantra-02.png" },
-    { title: "Atulya Remedies Pvt. Ltd.", image: "/portfolio/lOGOS PNG/atulya logo final file_Atulaya blue logo.png" },
-    { title: "Conch Shell Real Estate Pvt. Ltd.", image: "/portfolio/lOGOS PNG/conch-04.png" },
-    { title: "Dinner Bell Indian Cuisine", image: "/portfolio/lOGOS PNG/dinner bell-01.png" },
-    { title: "Evaluation Expertz", image: "/portfolio/lOGOS PNG/evaluation.png" },
-    { title: "Mahameru Estate", image: "/portfolio/lOGOS PNG/fianal file mahameru_main logo.png" },
-    { title: "Interior Circle", image: "/portfolio/lOGOS PNG/final files interial circle-02.png" },
-    { title: "Walso", image: "/portfolio/lOGOS PNG/final files of walso-04.png" },
-    { title: "Shree Damodar Auto Body Builders Pvt. Ltd.", image: "/portfolio/lOGOS PNG/final files_main logo.png" },
-    { title: "Aadhyatmik Darpan", image: "/portfolio/lOGOS PNG/final-01.png" },
-    { title: "Flytools", image: "/portfolio/lOGOS PNG/flytools-03.png" },
-    { title: "Forrise", image: "/portfolio/lOGOS PNG/forrice final files_yellow logo.png" },
-    { title: "Keychip Solutions", image: "/portfolio/lOGOS PNG/keychip final file_gradint color.png" },
-    { title: "Kristech Visions", image: "/portfolio/lOGOS PNG/kristech Visions-01.png" },
-    { title: "Lavo", image: "/portfolio/lOGOS PNG/lavo final file_visiting card back rajmohan.png" },
-    { title: "Max TechWorks", image: "/portfolio/lOGOS PNG/maxtech final file-04.png" },
-    { title: "Medicas Manus", image: "/portfolio/lOGOS PNG/medicas Menus_medicas manus final logo.png" },
-    { title: "Mind O", image: "/portfolio/lOGOS PNG/mind o_logo with sky color.jpg" },
-    { title: "Nihoma Boats", image: "/portfolio/lOGOS PNG/nihoma final file-01.png" },
-    { title: "OrgOrbit", image: "/portfolio/lOGOS PNG/orbit-06.png" },
-    { title: "Prasatti Global Solutions", image: "/portfolio/lOGOS PNG/prasatti logo_maiin logo.png" },
-    { title: "Rostrum Mike & Stands", image: "/portfolio/lOGOS PNG/rostrum-01.png" },
-    { title: "Story House", image: "/portfolio/lOGOS PNG/story.png" },
-    { title: "Unike", image: "/portfolio/lOGOS PNG/unike-03-02.png" },
-    { title: "Vilambo", image: "/portfolio/lOGOS PNG/vilambo logo-02.png" },
-    { title: "J & J Ventures", image: "/portfolio/lOGOS PNG/visiting card copy11 copy_main logo.png" },
-    { title: "Vito Hospitality", image: "/portfolio/lOGOS PNG/visiting card-05.png" },
-    { title: "Yana Foundation", image: "/portfolio/lOGOS PNG/yana(logo,LH,VC)_yana visiting card front copy.png" },
-    { title: "Zero Zahar", image: "/portfolio/lOGOS PNG/zerozaher-01.png" }
-];
+const projects = Array.from({ length: 38 }, (_, i) => ({
+    title: `Project ${i + 1}`,
+    image: `/portfolio/2025 For sample.2026/Slide${i + 1}.JPG`
+}));
 
 const PortfolioLogo = ({ proj }) => (
     <div
@@ -210,9 +126,9 @@ const MarqueeRow = ({ items, direction = 'left' }) => {
 };
 
 const Portfolio = () => {
-    const row1 = projects.slice(0, 31);
-    const row2 = projects.slice(31, 62);
-    const row3 = projects.slice(62, 93);
+    const row1 = projects.slice(0, 13);
+    const row2 = projects.slice(13, 26);
+    const row3 = projects.slice(26, 38);
 
     return (
         <section id="portfolio" className="section" style={{ background: 'transparent', overflow: 'hidden' }}>
@@ -235,6 +151,34 @@ const Portfolio = () => {
                 <MarqueeRow items={row2} direction="right" />
                 <MarqueeRow items={row3} direction="left" />
             </div>
+
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                style={{ marginTop: '4rem', display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 10 }}
+            >
+                <Link to="/contact" className="btn btn-primary" style={{
+                    height: '56px',
+                    padding: '0 2.5rem',
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
+                    borderRadius: '100px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    textDecoration: 'none'
+                }}>
+                    Let's start now
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </Link>
+            </motion.div>
 
             <style>
                 {`

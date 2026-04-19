@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const WhatsAppButton = () => {
-    const phoneNumber = "919638074924";
+    const phoneNumber = "919664829116";
     const message = "Hi, I'm interested in working with Happywinds Logo!";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -20,7 +20,7 @@ const WhatsAppButton = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ 
+                whileHover={{
                     scale: 1.1,
                     background: '#25D366',
                     boxShadow: '0 8px 32px rgba(37, 211, 102, 0.4)'

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Resources = () => {
     return (
@@ -29,9 +29,9 @@ const Resources = () => {
                         </p>
                     </div>
                     <div>
-                        <a href="#" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', whiteSpace: 'nowrap' }}>
-                            <ArrowDownCircle size={20} />
-                            Download Guide
+                        <a href="/Logo Guide by HW eBOOK.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', whiteSpace: 'nowrap' }}>
+                            Guide
+                            <ArrowRight size={20} />
                         </a>
                     </div>
                 </motion.div>
