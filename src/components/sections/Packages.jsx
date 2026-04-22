@@ -21,14 +21,32 @@ const packages = [
         price: '₹18,500',
         isPopular: true,
         description: 'Premium package with unlimited revisions and complete branding.',
-        features: ['20 Unique Logos Options', 'Unlimited Logo Revisions', '10 Visiting Card Design', '10 LH & Envelop Design', '5 Social Media Icon', 'JPG & PDF Logo File', 'Transparent PNG & GIF', 'CDR Editable Logo File', '3D Mock Ups', '8 Days Delivery Time']
+        features: ['20 Unique Logos Options', 'Unlimited Logo Revisions', '10 Visiting Card Design', '10 LH & Envelop Design', '5 Social Media Icon', 'JPG & PDF Logo File', 'Transparent PNG & GIF', 'AI Editable Logo File', 'CDR Editable Logo File', '3D Mock Ups', '8 Days Delivery Time']
     },
     {
-        name: 'Studio',
+        name: 'Ultimate',
         price: '₹30,800',
         isUltimate: true,
         description: "Discover the ultimate solution for your branding needs. Perfect for revamps or new scratch developments.",
-        features: ['20 Unique Logo options', 'Unlimited modification', '10 Visiting Card Design', '10 LH & Envelop Design', '5 Social Media Icon', 'JPG & PDF Logo File', 'Transparent PNG & GIF', 'CDR Editable Logo File', '3D Mock Ups', '8 Days Delivery Time']
+        features: [
+            '20 Unique Logo Options',
+            'Unlimited Logo Revisions',
+            '10 Visiting Card Designs',
+            '10 Letterhead & Envelope Designs',
+            '5 Social Media Icons',
+            '2 Logo Animations',
+            'Brand Presentation (PPT)',
+            'Employee ID Card Design',
+            'Email Signature Design',
+            'Brand Guidelines Book',
+            '24 Festive Social Media Posts',
+            '2 Custom Posts / Brochures',
+            'JPG & PDF Logo Files',
+            'Transparent PNG & GIF',
+            'CDR Editable Logo File',
+            '3D Mockups',
+            '8 Days Delivery Time'
+        ]
     }
 ];
 
@@ -60,24 +78,28 @@ const Packages = () => {
                                 style={{
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    height: '100%',
+                                    height: '650px', // Shortened height
                                     position: 'relative',
+                                    overflow: 'hidden',
+                                    background: 'var(--color-bg-card)',
+                                    color: 'inherit',
+                                    borderColor: 'var(--color-border)'
                                 }}
                             >
                                 {pkg.isPopular && (
                                     <div style={{
-                                        position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)',
+                                        position: 'absolute', top: '12px', right: '12px',
                                         background: 'var(--color-secondary)', color: 'white',
-                                        padding: '4px 12px', fontSize: '0.8rem', borderRadius: '12px', fontWeight: 600,
+                                        padding: '4px 12px', fontSize: '0.7rem', borderRadius: '12px', fontWeight: 600,
                                         zIndex: 10
                                     }}>POPULAR</div>
                                 )}
 
                                 {isUltimate && (
                                     <div style={{
-                                        position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)',
+                                        position: 'absolute', top: '12px', right: '12px',
                                         background: 'var(--color-primary)', color: 'white',
-                                        padding: '4px 12px', fontSize: '0.8rem', borderRadius: '12px', fontWeight: 600,
+                                        padding: '4px 12px', fontSize: '0.7rem', borderRadius: '12px', fontWeight: 600,
                                         display: 'flex', alignItems: 'center', gap: '0.25rem', width: 'max-content',
                                         zIndex: 10
                                     }}>
@@ -85,40 +107,51 @@ const Packages = () => {
                                     </div>
                                 )}
 
-                                <h3 style={{
-                                    fontSize: '1.4rem',
-                                    marginBottom: '0.8rem',
-                                    color: 'inherit',
-                                    letterSpacing: '-0.02em'
-                                }}>
-                                    {pkg.name}
-                                </h3>
+                                <div style={{ padding: '0 0 1rem 0' }}>
+                                    <h3 style={{
+                                        fontSize: '1.4rem',
+                                        marginBottom: '0.5rem',
+                                        color: 'inherit',
+                                        letterSpacing: '-0.02em'
+                                    }}>
+                                        {pkg.name}
+                                    </h3>
 
-                                <p style={{
-                                    fontSize: '0.85rem',
-                                    marginBottom: '1.5rem',
-                                    opacity: 0.9,
-                                    color: 'inherit',
-                                    minHeight: '3rem'
-                                }}>
-                                    {pkg.description}
-                                </p>
+                                    <p style={{
+                                        fontSize: '0.85rem',
+                                        marginBottom: '1rem',
+                                        opacity: 0.9,
+                                        color: 'inherit',
+                                        minHeight: '2.5rem',
+                                        lineHeight: '1.4'
+                                    }}>
+                                        {pkg.description}
+                                    </p>
 
-                                <div style={{
-                                    fontSize: '1.8rem',
-                                    fontWeight: 700,
-                                    marginBottom: '2rem',
-                                    color: 'inherit'
-                                }}>
-                                    {pkg.price}
+                                    <div style={{
+                                        fontSize: '2rem',
+                                        fontWeight: 700,
+                                        marginBottom: '1.5rem',
+                                        color: 'inherit'
+                                    }}>
+                                        {pkg.price}
+                                    </div>
                                 </div>
 
-                                <ul style={{ listStyle: 'none', marginBottom: '2rem', flex: 1, padding: 0 }}>
+                                <ul className="custom-scrollbar" style={{
+                                    listStyle: 'none',
+                                    marginBottom: '1.5rem',
+                                    flex: 1,
+                                    padding: '0 0.5rem 0 0',
+                                    overflowY: 'auto',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '0.75rem'
+                                }}>
                                     {pkg.features.map((feat, i) => (
                                         <li key={i} style={{
                                             display: 'flex',
                                             alignItems: 'flex-start',
-                                            marginBottom: '0.75rem',
                                             fontSize: '0.85rem',
                                             opacity: 1,
                                             color: 'inherit',
@@ -127,7 +160,7 @@ const Packages = () => {
                                             <Check
                                                 size={14}
                                                 style={{
-                                                    marginRight: '0.5rem',
+                                                    marginRight: '0.6rem',
                                                     marginTop: '3px',
                                                     flexShrink: 0,
                                                     color: 'inherit'
@@ -138,13 +171,15 @@ const Packages = () => {
                                     ))}
                                 </ul>
 
-                                <Link
-                                    to="/contact"
-                                    className="btn btn-primary"
-                                    style={{ padding: '0.75rem 1.5rem', fontSize: '0.85rem', textAlign: 'center', display: 'block' }}
-                                >
-                                    Book a Call
-                                </Link>
+                                <div style={{ marginTop: 'auto' }}>
+                                    <Link
+                                        to="/contact"
+                                        className="btn btn-primary"
+                                        style={{ width: '100%', padding: '0.85rem', fontSize: '0.9rem', textAlign: 'center', display: 'block' }}
+                                    >
+                                        Book a Call
+                                    </Link>
+                                </div>
                             </motion.div>
                         );
                     })}
