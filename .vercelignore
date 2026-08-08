@@ -1,0 +1,9 @@
+# Local-only / non-deploy paths
+_source
+_archive
+node_modules
+.next
+.vercel
+.env*.local
+*.tsbuildinfo
+contact-sheet.jpg
