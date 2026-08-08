@@ -1,10 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Syne } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 const syne = Syne({
   variable: "--font-syne",
@@ -47,10 +53,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${syne.variable} ${instrument.variable} h-full`}>
-      <body className="min-h-full antialiased">
+      <body className="min-h-full overflow-x-clip antialiased">
         <SmoothScroll>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+            {children}
+          </main>
           <Footer />
         </SmoothScroll>
         <WhatsAppButton />

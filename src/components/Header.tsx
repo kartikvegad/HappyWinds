@@ -32,8 +32,8 @@ export function Header() {
 
   return (
     <>
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-4 md:px-6 md:pt-5">
-        <div className="pointer-events-auto flex w-full items-center justify-between gap-3 rounded-full border border-white/10 bg-ink/90 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl md:w-auto md:justify-start md:gap-5 md:px-4 md:py-2.5">
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-[max(0.75rem,env(safe-area-inset-top))] md:px-6 md:pt-[max(1.25rem,env(safe-area-inset-top))]">
+        <div className="pointer-events-auto flex w-full max-w-[100%] items-center justify-between gap-3 rounded-full border border-white/10 bg-ink/90 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl md:w-auto md:max-w-none md:justify-start md:gap-5 md:px-4 md:py-2.5">
           <Link href="/" className="relative z-50 shrink-0" aria-label="Happywinds home">
             <Image
               src="/assets/brand/logo-white.png"
@@ -108,7 +108,7 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-ink pt-24 text-bg md:hidden"
+            className="fixed inset-0 z-40 bg-ink pt-[calc(5.5rem+env(safe-area-inset-top))] text-bg md:hidden"
           >
             <nav className="flex flex-col gap-1 px-6">
               {[...links, { href: "/contact", label: "Contact" }].map((link, i) => {

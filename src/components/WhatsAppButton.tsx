@@ -10,7 +10,11 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Message Happywinds on WhatsApp"
-      className="fixed bottom-5 right-5 z-[70] flex h-[52px] w-[52px] items-center justify-center rounded-full border-[2.5px] border-white bg-[#25D366] md:bottom-7 md:right-7 md:h-14 md:w-14"
+      className="fixed z-[70] flex h-[52px] w-[52px] items-center justify-center rounded-full border-[2.5px] border-white bg-[#25D366] md:h-14 md:w-14"
+      style={{
+        bottom: "max(1.25rem, env(safe-area-inset-bottom))",
+        right: "max(1.25rem, env(safe-area-inset-right))",
+      }}
     >
       <svg
         viewBox="0 0 24 24"

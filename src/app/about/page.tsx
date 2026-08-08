@@ -42,15 +42,15 @@ const teams = [
 
 export default function AboutPage() {
   return (
-    <div className="pt-24 md:pt-28">
+    <div className="pt-[calc(5.5rem+env(safe-area-inset-top))] md:pt-28">
       {/* Manifesto — Mucho-style opening */}
-      <section className="site-grid pb-16 md:pb-24">
+      <section className="site-grid pb-12 md:pb-24">
         <FadeIn>
-          <p className="eyebrow mb-6">Studio</p>
-          <h1 className="display max-w-5xl text-4xl md:text-6xl lg:text-7xl">
+          <p className="eyebrow mb-4 md:mb-6">Studio</p>
+          <h1 className="display max-w-5xl text-[2rem] leading-[1.08] sm:text-4xl md:text-6xl lg:text-7xl">
             At Happywinds, we bring clear logic to every mark.
           </h1>
-          <div className="mt-10 max-w-3xl space-y-5 text-lg leading-relaxed text-muted md:text-xl">
+          <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:mt-10 sm:space-y-5 sm:text-lg md:text-xl">
             <p>
               More ways of looking. More ways of thinking. More curiosity to
               discover what a brand truly needs — and the craft to shape what
@@ -117,31 +117,25 @@ export default function AboutPage() {
 
       {/* By the numbers */}
       <section className="border-y border-line bg-bg-elevated">
-        <div className="site-grid py-14 md:py-20">
+        <div className="site-grid py-12 md:py-20">
           <FadeIn>
-            <p className="eyebrow mb-10">By the numbers</p>
+            <p className="eyebrow mb-8 md:mb-10">By the numbers</p>
           </FadeIn>
-          <div className="grid grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4 lg:gap-0">
             {[
-              ["2009", "Founded"],
-              ["Ahmedabad", "Studio home"],
+              ["2009", "Year founded"],
               ["2000+", "Brands built"],
+              ["150+", "Industries"],
               ["3", "Core teams"],
             ].map(([stat, label], i) => (
               <FadeIn
                 key={label}
-                delay={i * 0.05}
-                className={`min-w-0 py-2 pr-6 ${
-                  i % 2 === 1 ? "pl-6 sm:pl-8" : ""
-                } ${
-                  i >= 2 ? "border-t border-line pt-8 lg:border-t-0 lg:pt-2" : ""
-                } ${
-                  i > 0
-                    ? "lg:border-l lg:border-line lg:pl-8 lg:pr-6"
-                    : "lg:pr-6"
-                }`}
+                delay={i * 0.04}
+                className={`min-w-0 ${
+                  i > 0 ? "lg:border-l lg:border-line lg:pl-8" : ""
+                } ${i < 3 ? "lg:pr-6" : ""}`}
               >
-                <p className="display text-3xl tracking-tight md:text-4xl lg:text-[2.75rem]">
+                <p className="display text-3xl tracking-tight sm:text-4xl lg:text-[2.75rem]">
                   {stat}
                 </p>
                 <p className="mt-2 text-sm text-muted">{label}</p>
