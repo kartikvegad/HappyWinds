@@ -26,8 +26,11 @@ export const metadata: Metadata = {
   description:
     "Happywinds Logos is an Ahmedabad design studio crafting logic-based logos — identities built on reason, craft, and lasting presence.",
   icons: {
-    icon: "/favicon.svg",
-    apple: "/apple-icon.jpg",
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "Happywinds Logos — Logic-Based Logo Design",
