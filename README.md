@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Happywinds Logos Website
 
-## Getting Started
+Portfolio site for **Happywinds Logos** — logic-based logo design from Ahmedabad.
 
-First, run the development server:
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` → `.env.local` and set:
 
-## Learn More
+- `GMAIL_USER` — studio Gmail
+- `GMAIL_APP_PASSWORD` — Google App Password (for contact + careers forms)
 
-To learn more about Next.js, take a look at the following resources:
+## Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/` — Hero, selected work, logic intro, clients, packages
+- `/work` — Full project grid
+- `/work/[slug]` — Case study
+- `/logic` — Logic-based logos
+- `/packages` — Startup / Silver / Gold / Custom
+- `/about` — Studio story + team
+- `/careers` — Applications (with resume upload)
+- `/contact` — Enquiry
+- `/services` — Services
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Folder layout
 
-## Deploy on Vercel
+| Path | Purpose |
+|------|---------|
+| `src/` | App Router pages, components, data |
+| `public/assets/` | Images used by the site |
+| `scripts/` | One-off asset helpers |
+| `_source/` | Original brand dumps (local only, not in git) |
+| `_archive/` | Old site copy (local only, not in git) |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Push this repo to GitHub, then connect it in Vercel (framework: Next.js, root directory: `.`).
