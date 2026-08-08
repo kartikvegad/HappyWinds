@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import type { Project } from "@/data/work";
 
-const INTERVAL_MS = 8000;
+const INTERVAL_MS = 4500;
 
 export function HeroShowcase({ projects }: { projects: Project[] }) {
   const [index, setIndex] = useState(0);

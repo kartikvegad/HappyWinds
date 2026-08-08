@@ -75,7 +75,7 @@ export const projects: Project[] = [
     mockup: "/assets/mockups/o3.jpg",
     logicImage: "/assets/logic/o3.jpg",
     logoImage: "/assets/logos/o3.png",
-    homeSpotlight: "grid",
+    homeSpotlight: "hero",
     accent: "#7CDB3A",
   },
   {
@@ -397,7 +397,6 @@ export const projects: Project[] = [
     mockup: "/assets/mockups/catch-aloha.jpg",
     logicImage: "/assets/logic/catch-aloha.jpg",
     logoImage: "/assets/logos/aloha-01.png",
-    homeSpotlight: "hero",
     accent: "#3C9A5F",
   },
   {
@@ -625,7 +624,6 @@ export function getHomeHeroProjects() {
 
 /** Preferred order for homepage Selected work. */
 const GRID_ORDER = [
-  "o3",
   "conch-shell",
   "fibocan",
   "valence",
